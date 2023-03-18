@@ -1,0 +1,59 @@
+#1. Every Three Numbers ---------------------------------------------------------------------------------------------------------------------------------
+#Write your function here
+def every_three_nums(start):
+  return list(range(start, 100, 3))
+
+#Uncomment the line below when your function is done
+print(every_three_nums(91))
+
+#2. Remove Middle------ ---------------------------------------------------------------------------------------------------------------------------------
+#Write your function here
+def remove_middle(my_list, start, end):
+  ml1=my_list[:start]
+  ml2=my_list[end+1:]
+  nl=ml1+ml2
+  return nl
+
+#Uncomment the line below when your function is done
+print(remove_middle([4, 8, 15, 16, 23, 42], 1, 3))
+
+#3. More Frequent Item ----------------------------------------------------------------------------------------------------------------------------------
+#Write your function here
+def more_frequent_item(my_list, item1, item2):
+  if my_list.count(item1)>=my_list.count(item2):
+    return item1
+  else:
+    return item2
+
+#Uncomment the line below when your function is done
+print(more_frequent_item([2, 3, 3, 2, 3, 2, 3, 2, 3], 2, 3))
+
+#4. Double Index ----------------------------------------------------------------------------------------------------------------------------------------
+#Write your function here
+def double_index(my_list, index):
+  if index >= len(my_list):
+    return my_list
+  else:
+    my_list.insert(index, my_list[index]*2)
+    if index >=0:
+      my_list.remove(my_list[index+1])
+      return my_list
+    else:
+      my_list.remove(my_list[index])
+      return my_list
+#Uncomment the line below when your function is done
+print(double_index([3, 8, -10, 12], 2))
+print(double_index([3, 8, -10, 12], -2))
+
+#5. Middle Item -----------------------------------------------------------------------------------------------------------------------------------------
+#Write your function here
+def middle_element(my_list):
+  if len(my_list)%2 != 0:
+    return my_list[int(len(my_list)/2)]
+  else:
+    avg_me = (my_list[int(len(my_list)/2-1)] + my_list[int(len(my_list)/2)])/2
+    return avg_me
+
+#Uncomment the line below when your function is done
+print(middle_element([5, 2, -10, -4, 4, 5]))
+
