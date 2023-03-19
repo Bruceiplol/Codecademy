@@ -1,4 +1,4 @@
-1. Divisible By Ten -------------------------------------------------------------------------------------------------------------------------------------
+#1. Divisible By Ten -------------------------------------------------------------------------------------------------------------------------------------
 #Write your function here
 def divisible_by_ten(nums):
   count = 0
@@ -10,7 +10,7 @@ def divisible_by_ten(nums):
 #Uncomment the line below when your function is done
 print(divisible_by_ten([20, 25, 30, 35, 40]))
 
-2. Greetings --------------------------------------------------------------------------------------------------------------------------------------------
+#2. Greetings --------------------------------------------------------------------------------------------------------------------------------------------
 #Write your function here
 def add_greetings(names):
   list=[]
@@ -21,7 +21,7 @@ def add_greetings(names):
 #Uncomment the line below when your function is done
 print(add_greetings(["Owen", "Max", "Sophie"]))
 
-3. Delete Starting Even Numbers -------------------------------------------------------------------------------------------------------------------------
+#3. Delete Starting Even Numbers -------------------------------------------------------------------------------------------------------------------------
 #Write your function here
 def delete_starting_evens(lst):
   for i in lst:
@@ -33,7 +33,7 @@ def delete_starting_evens(lst):
 print(delete_starting_evens([4, 8, 10, 11, 12, 15]))
 print(delete_starting_evens([4, 8, 10]))
 
-4. Odd Indices ------------------------------------------------------------------------------------------------------------------------------------------
+#4. Odd Indices ------------------------------------------------------------------------------------------------------------------------------------------
 #Write your function here
 def odd_indices(lst):
   odd_lst = []
@@ -45,7 +45,7 @@ def odd_indices(lst):
 #Uncomment the line below when your function is done
 print(odd_indices([4, 3, 7, 10, 11, -2]))
 
-5. Exponents ---------------------------------------------------------------------------------------------------------------------------------------------
+#5. Exponents ---------------------------------------------------------------------------------------------------------------------------------------------
 #Write your function here
 def exponents(bases, powers):
   new_lst =[]
