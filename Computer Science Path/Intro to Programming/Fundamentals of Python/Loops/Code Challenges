@@ -1,0 +1,59 @@
+1. Divisible By Ten -------------------------------------------------------------------------------------------------------------------------------------
+#Write your function here
+def divisible_by_ten(nums):
+  count = 0
+  for i in nums:
+    if i % 10 ==0:
+      count += 1
+  return count
+
+#Uncomment the line below when your function is done
+print(divisible_by_ten([20, 25, 30, 35, 40]))
+
+2. Greetings --------------------------------------------------------------------------------------------------------------------------------------------
+#Write your function here
+def add_greetings(names):
+  list=[]
+  for name in names:
+    list.append("Hello, " + name)
+  return list
+
+#Uncomment the line below when your function is done
+print(add_greetings(["Owen", "Max", "Sophie"]))
+
+3. Delete Starting Even Numbers -------------------------------------------------------------------------------------------------------------------------
+#Write your function here
+def delete_starting_evens(lst):
+  for i in lst:
+    if len(lst)>0 and lst[0]%2==0:
+      lst = lst[1:]
+  return lst
+
+#Uncomment the lines below when your function is done
+print(delete_starting_evens([4, 8, 10, 11, 12, 15]))
+print(delete_starting_evens([4, 8, 10]))
+
+4. Odd Indices ------------------------------------------------------------------------------------------------------------------------------------------
+#Write your function here
+def odd_indices(lst):
+  odd_lst = []
+  for i in range(1, len(lst), 2):
+    odd_lst.append(lst[i])
+  return odd_lst
+
+
+#Uncomment the line below when your function is done
+print(odd_indices([4, 3, 7, 10, 11, -2]))
+
+5. Exponents ---------------------------------------------------------------------------------------------------------------------------------------------
+#Write your function here
+def exponents(bases, powers):
+  new_lst =[]
+  for base in bases:
+    for power in powers:
+      new_lst.append(base**power)
+
+  return new_lst
+
+#Uncomment the line below when your function is done
+print(exponents([2, 3, 4], [1, 2, 3]))
