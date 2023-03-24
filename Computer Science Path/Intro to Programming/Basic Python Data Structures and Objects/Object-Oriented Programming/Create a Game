@@ -26,11 +26,11 @@ class Character:
   def __repr__(self):
     return f"{self.name}, who is a {self.type}, is at level {self.level}, and has {self.health} health remaining."
 
-  def defend(self, instructions):
-    if instructions == 1:
+  def defend(self, commands):
+    if commands == 1:
       print (f'{self.name} chooses to shield~')
       return 0.6
-    elif instructions == 2:
+    elif commands == 2:
       print (f'{self.name} tries to dodge~')
       choice = random.choice([0,1])
       if choice == 0:
@@ -44,11 +44,11 @@ class Character:
 class Warrior(Character):
   def __init__(self, name, sex, character_class, level = 1, damage = None):
     super().__init__(name, sex, "Warrior", level, damage)
-  def attack(self, instructions):
-    if instructions == 1:
+  def attack(self, commands):
+    if commands == 1:
       print(f'{self.name} uses slash!!')
       return self.damage
-    elif instructions == 2:
+    elif commands == 2:
       print(f'{self.name} uses a spin slash!!')
       return random.choice([self.damage*1.5, self.damage*0.5])
 
@@ -56,11 +56,11 @@ class Warrior(Character):
 class Wizard(Character):
   def __init__(self, name, sex, character_class, level = 1, damage = None):
     super().__init__(name, sex, "Wizard", level, damage)
-  def attack(self, instructions):
-    if instructions == 1:
+  def attack(self, commands):
+    if commands == 1:
       print(f'{self.name} uses fire ball!!')
       return self.damage
-    elif instructions == 2:
+    elif commands == 2:
       print(f'{self.name} calls the thunder!!')
       return random.choice([self.damage*1.5, self.damage*0.5])
 
@@ -71,11 +71,11 @@ class Monster(Character):
     self.health = basic_health + level*100
     self.damage = basic_damage + level*500
 
-  def attack(self, instructions):
-    if instructions == 1:
+  def attack(self, commands):
+    if commands == 1:
       print(f'{self.name} uses scratches!!')
       return 140
-    elif instructions == 2:
+    elif commands == 2:
       print(f'{self.name} spits venom!!')
       return random.choice([200,100])
 
@@ -93,8 +93,8 @@ print(f"{player_name} meets level {enemy.level} {enemy.name}!!")
 while True:
   #My Turn
   print("It is Your Attack Turn:")
-  attack_instruction = int(input("Please choose a command: \n(1) Normal Attack (2) Special Attack \n" ))
-  player_damage = player.attack(attack_instruction)
+  attack_command = int(input("Please choose a command: \n(1) Normal Attack (2) Special Attack \n" ))
+  player_damage = player.attack(attack_command)
   health_lose = int(enemy.defend(random.choice([1,2])) * player_damage)
   enemy.health -= health_lose
   if enemy.health <= 0:
@@ -106,9 +106,9 @@ while True:
 
   #Enemy Turn
   print("It is Your Enemy Attack Turn:")
-  defend_instruction = int(input("Please choose a command: \n(1) Shield (2) Dodge \n"))
+  defend_command = int(input("Please choose a command: \n(1) Shield (2) Dodge \n"))
   enemy_damage = enemy.attack(random.choice([1,2]))
-  health_lose = int(player.defend(defend_instruction) * enemy_damage)
+  health_lose = int(player.defend(defend_command) * enemy_damage)
   player.health -= health_lose
   if player.health <= 0:
     print(f'{player.name} is down, GAME OVER!')
