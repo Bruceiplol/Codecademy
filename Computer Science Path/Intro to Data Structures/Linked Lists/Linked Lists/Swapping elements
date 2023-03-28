@@ -1,0 +1,76 @@
+#Given a linked list and the elements to be swapped (val1 and val2), we need to keep track of four values:
+#node1: the node that matches val1
+#node1_prev: node1‘s previous node
+#node2: the node that matches val2
+#node2_prev: node2‘s previous node
+
+#Given an input of a linked list, val1, and val2, the general steps for doing so is as follows:
+#1. Iterate through the list looking for the node that matches val1 to be swapped (node1), keeping track of the node’s previous node as you iterate (node1_prev)
+#2. Repeat step 1 looking for the node that matches val2 (giving you node2 and node2_prev)
+#3. If node1_prev is None, node1 was the head of the list, so set the list’s head to node2
+#4. Otherwise, set node1_prev‘s next node to node2
+#5. If node2_prev is None, set the list’s head to node1
+#6. Otherwise, set node2_prev‘s next node to node1
+#7. Set node1‘s next node to node2‘s next node
+#8. Set node2‘s next node to node1‘s next node
+
+import Node
+import LinkedList
+
+def swap_nodes(input_list, val1, val2):
+  print(f'Swapping {val1} with {val2}')
+
+  node1_prev = None #-------------------------------- use to store node1 previous node data
+  node2_prev = None #-------------------------------- use to store node2 previous node data
+  node1 = input_list.head_node #--------------------- set node1 = head node (to start the loop)
+  node2 = input_list.head_node #--------------------- set node2 = head node (to start the loop)
+
+  #make sure two node value is not the same (or meaningless)
+  if val1 == val2: 
+    print("Elements are the same - no swap needed")
+    return
+  
+  #instruction 1- finding the node1 that match val1
+  while node1 is not None: #------------------------- loop until the end
+    if node1.get_value() == val1:
+      break # --------------------------------------- if the target node1 is find, out of the loop
+    node1_prev = node1 #----------------------------- otherwise, node1_prev store node1 value (so that the search can move on and remembering the prev node)
+    node1 = node1.get_next_node() #------------------ node1 move to next node to continuet to search
+  
+  #instrcution 2 - repeat node1 steps
+  while node2 is not None:
+    if node2.get_value() == val2:
+      break
+    node2_prev = node2
+    node2 = node2.get_next_node()
+  
+  #make sure nodes matching val1 and val2 (meaningless if they are not in the list and process)
+  if (node1 is None or node2 is None):
+    print("Swap not possible - one or more element is not in the list")
+    return
+  
+  #instruction 3 - if node1_prev is none, which means node1 is head, thus change to head to node2 (swap head)
+  if node1_prev is None:
+    input_list.head_node = node2
+  else: #--------------------------------------------- instruction 4 - if node1 is not head node, make the node1_prev set link to node2 (as prev next is node1) 
+    node1_prev.set_next_node(node2)
+  
+  #instruction 5 - repeat node1 steps, if node2_prev is none, which means node2 is head, thus change to head to node1 (swap head)
+  if node2_prev is None:
+    input_list.head_node = node1
+  else: #--------------------------------------------- instruction 6 - if node2 is not head node, make the node2_prev set link to node1 (as prev next is node1) 
+    node2_prev.set_next_node(node1)
+  
+  #instuction 6 & 7 - tune the target next node link to swap
+  temp = node1.get_next_node() #store node1 in advance, prevent overwrite the node1_next_node_link
+  node1.set_next_node(node2.get_next_node()) 
+  node2.set_next_node(temp)
+
+
+ll = LinkedList.LinkedList()
+for i in range(10):
+  ll.insert_beginning(i)
+
+print(ll.stringify_list())
+swap_nodes(ll, 9, 5)
+print(ll.stringify_list())
