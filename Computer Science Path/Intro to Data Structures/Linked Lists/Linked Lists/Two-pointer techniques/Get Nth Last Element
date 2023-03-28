@@ -1,0 +1,36 @@
+#Get Nth Last Element in the Linked List
+#1. We'll use one pointer to iterate through the entire list,
+#2. We’ll also move a second pointer delayed n steps behind the first one.
+#3. A count variable can keep track of the position of the current element in the linked list that the tail pointer is pointing to,
+#which is initially set to 1 which is the first element’s position.
+
+
+from LinkedList import LinkedList
+
+def nth_last_node(linked_list, n):
+  nth_pointer = None
+  tail_pointer = linked_list.head_node
+  count = 1
+
+  while tail_pointer: #---------------------------------- while tail pointer exists
+    tail_pointer = tail_pointer.get_next_node() #-------- move tail pointer forward
+    count +=1 #------------------------------------------ increment count (tracking position)
+
+    if count >= n + 1: #--------------------------------- which means when the tail pointers moves n nodes into the linked list from its starting position of 1, it will be at position n + 1.
+      if not nth_pointer: #------------------------------ We want the nth last pointer to be n nodes behind (delay), 
+        nth_pointer = linked_list.head_node #------------ so we set the nth last pointer to the head node at position 1.
+      else:
+        nth_pointer = nth_pointer.get_next_node() #------ once nth last pointer starts to move, continue move forward until tail_pointer reach the end(None)
+  return nth_pointer #----------------------------------- when tail_pointer reach the end(None), out of loop and return the nth_last_pointer value
+
+def generate_test_linked_list():
+  linked_list = LinkedList()
+  for i in range(50,0,-1):
+    linked_list.insert_beginning(i)
+  return linked_list
+
+# Use this to test your code:
+test_list = generate_test_linked_list()
+print(test_list.stringify_list())
+nth_last = nth_last_node(test_list, 4)
+print(nth_last.value)
