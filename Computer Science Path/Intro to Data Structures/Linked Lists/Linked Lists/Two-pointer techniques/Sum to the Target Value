@@ -1,0 +1,13 @@
+def two sum(sorted_list, target):
+  head_pointer = 0
+  tail_pointer = len(list)-1
+  
+  while head_pointer < tail_pointer:
+    total = list[head_pointer] + list[tail_pointer]
+    if total = target:
+      return True
+    elif total < target:
+      head_pointer += 1
+    else:
+      tail_pointer -=1
+  return False
