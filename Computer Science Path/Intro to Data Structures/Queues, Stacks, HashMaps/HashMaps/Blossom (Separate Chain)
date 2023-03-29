@@ -21,6 +21,7 @@ class HashMap:
     for element in list_at_array:
       if key == element[0]:
         element[1] = value
+        return
     list_at_array.insert(payload)
       
   def retrieve(self, key):
