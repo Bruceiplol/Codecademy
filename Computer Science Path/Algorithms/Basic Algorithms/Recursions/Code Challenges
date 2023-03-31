@@ -1,0 +1,62 @@
+#1. Move items to the end of a list --------------------------------------------------------------------------------------------------------------------
+def move_to_end(lst, val):
+  result = []
+  if not lst:
+    return result
+      
+  if lst[0] == val:
+    result += move_to_end(lst[1:], val)
+    result.append(lst[0])
+  else:
+    result.append(lst[0])
+    result += move_to_end(lst[1:], val)
+
+  return result
+
+# Test code - do not edit
+gemstones = ["Amber", "Sapphire", "Amber", "Jade"]
+print(move_to_end(gemstones, "Amber"))
+
+#2. Delete i-th node from a linked list ----------------------------------------------------------------------------------------------------------------
+import LinkedList
+
+# Definition for singly-linked list node.
+#class ListNode:
+#  def __init__(self, value, next_node=None):
+#         self.value = value
+#         self.next_node = next_node
+
+# define remove_node() here
+def remove_node(head, i):
+  if i < 0:
+    return head
+  if not head:
+     return None
+  if i == 0:
+    return head.next_node
+  head.next_node = remove_node(head.next_node, i-1)
+  return head
+
+
+
+# Test code - do not edit
+gemstones = LinkedList.LinkedList(["Amber", "Sapphire", "Jade", "Pearl"])
+head = remove_node(gemstones.head, 1)
+print(head.flatten())
+
+
+#3. Prepend and append to a string --------------------------------------------------------------------------------------------------------------------
+# define wrap_string() here
+def wrap_string(str, n):
+  result =""
+  if n <= 0:
+    return str
+  result += "<"
+  result += wrap_string(str, n-1)
+  result += ">"
+ 
+  return result
+  
+# Test code - do not edit
+wrapped = wrap_string("Pearl", 3)
+print(wrapped)
