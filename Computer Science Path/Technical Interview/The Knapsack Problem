@@ -3,7 +3,7 @@
 
 def dynamic_knapsack(weight_cap, weights, values):
   rows = len(weights) + 1
-  cols = weight_cap + 1
+  cols = weight_cap + 1 #weight_cap +1 includes considering the case where the weight capacity is 0 (i.e., the knapsack is empty)
   # Set up 2D array
   matrix = [ [] for x in range(rows) ]
 
