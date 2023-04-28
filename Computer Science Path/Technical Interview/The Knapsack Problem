@@ -1,6 +1,21 @@
 #recursive solution - time: O(2^n)
 #The Dynamic Programming Approach - time: O(n * weight_cap)
 
+#recursive solution:
+def recursive_knapsack(weight_cap, weights, values, i):
+  if weight_cap == 0 or i == 0:
+    return 0
+  elif weights[i - 1] > weight_cap:
+    return recursive_knapsack(weight_cap, weights, values, i - 1)
+  else:
+    include_item = values[i - 1] + recursive_knapsack(weight_cap - weights[i - 1], weights, values, i - 1);
+ 
+    exclude_item = recursive_knapsack(weight_cap, weights, values, i - 1);
+ 
+    return max(include_item, exclude_item)
+
+
+#The Dynamic Programming Approach:
 def dynamic_knapsack(weight_cap, weights, values):
   rows = len(weights) + 1
   cols = weight_cap + 1 #weight_cap +1 includes considering the case where the weight capacity is 0 (i.e., the knapsack is empty)
@@ -14,7 +29,6 @@ def dynamic_knapsack(weight_cap, weights, values):
 
     # Iterate through every column
     for weight in range(cols):
-      # Write your code here
       if index == 0 or weight == 0:
         matrix[index][weight] = 0
       # If weight at previous row is less than or equal to current weight
