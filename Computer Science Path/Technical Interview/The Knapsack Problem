@@ -1,3 +1,4 @@
+#best knapsack tutorial: https://www.youtube.com/watch?v=gA0I_tFBCTE&ab_channel=0612TVw%2FNERDfirst
 #recursive solution - time: O(2^n)
 #The Dynamic Programming Approach - time: O(n * weight_cap)
 
