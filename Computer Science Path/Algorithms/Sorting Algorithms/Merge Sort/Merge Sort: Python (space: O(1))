@@ -1,0 +1,46 @@
+#1. create merge_sort function, taking arr,left point and right pointer <-- this save up memories!
+#2. deciding base case, we know if left and right pointer pointing the same value, the array left only that one.
+#3. if left pointer not = right pointer, which means we havent reach the base case, create the middle index and recursively call the function to break down
+  #3.1 m is set = to (l+r)//2 instead of len(arr) because we are not literally splitting the array
+#4. call the merge function to proceed the combining and sorting process
+#5. after merging , we can return the sorted array as output
+#6. back to create the merge function (combining and sorting), taking the left, middle, right pointer (for split list)
+#7. create the split list
+#8. create three pointers (i for original array (start from l pointer), j for left split, k for right split)
+#9. iterate to sort, condition set if the pointers are in bound
+  #9.1.compare the smallest value of the split lists and overwrite it to the original array (remember to increment the pointers)
+#10. check for the leftovers in both split lists (if the pointers are still in bound)
+
+def merge_sort(arr, l, r):
+  if l==r: 
+    return arr
+            
+  m = (l+r)//2 
+  merge_sort(arr,l,m)
+  merge_sort(arr, m+1, r)          
+  merge(arr, l, m, r)          
+  return arr
+
+def merge(arr, l, m, r):
+  left, right = arr[l:m+1], arr[m+1:r+1]          
+  i,j,k = l,0,0
+  while j < len(left) and k <len(right):
+    if left[j] < right[k]:
+      arr[i] = left[j]
+      j+=1
+    else:
+      arr[i]=right[k]
+      k+=1
+    i+=1
+  while j < len(left):
+    arr[i] = left[j]
+    j+=1
+    i+=1
+  while k < len(right):
+    arr[i] = right[k]
+    k+=1
+    i+=1
+
+test= merge_sort(nums, 0, len(nums)-1)
+
+        
