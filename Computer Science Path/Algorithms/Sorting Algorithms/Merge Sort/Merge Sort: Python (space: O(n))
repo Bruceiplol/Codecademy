@@ -1,3 +1,13 @@
+#Merge Sort (Normal Version with space O(n)):
+#1. def a merge_sort function (for breaking down the lst to become only 1 value left)
+#2. partition: find the middle index and split the list into two sub-list
+#3. recursely breaking the sublist by calling merge_sort(left_split and right_split)
+#4. output the merge(left, right) sorted list
+#5. create merge function (combine the sub-list(left and right) back together) and would return a result sorted list
+#6. Merge1: while left and right sub-lists have value, compare the smallest value of them (left[0] and right[0]) 
+#           to check which one is small and add it to the result list (remember to pop out the smallest value to avoid infinte loop)
+#7. Merge2: when we finishing comparing the left and right sub-lists, there could be leftovers remaining, so last is to check if there is value leftover and add them into result list
+
 def merge_sort(items):
   if len(items) <= 1:
     return items
