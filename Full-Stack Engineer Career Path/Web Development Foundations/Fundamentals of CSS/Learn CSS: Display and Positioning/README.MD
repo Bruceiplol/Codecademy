@@ -1,9 +1,9 @@
 - Position: specify the position of an element.
-  - static - the default value (it does not need to be specified)
-  - relative (relative to its default position on the page, eg. position:relate + left:50px = push the element to the right 50px)
-  - absolute (pinned, would overlap with other elemenrs -- all other elements on the page will ignore the element and act like it is not present on the page, but it would move together when the page is scrolled)
-  - fixed (pinned, often used for navigation bars -- the element will remain in view no matter what.)
-  - sticky (an element can stick to a defined offset position when the user scrolls its parent container)
+  - static: the default value (it does not need to be specified)
+  - relative: (relative to its default position on the page, eg. position:relate + left:50px = push the element to the right 50px)
+  - absolute: (pinned, would overlap with other elemenrs -- all other elements on the page will ignore the element and act like it is not present on the page, but it would move together when the page is scrolled)
+  - fixed: (pinned, often used for navigation bars -- the element will remain in view no matter what.)
+  - sticky: (an element can stick to a defined offset position when the user scrolls its parent container)
 
 - Z-index: push away for overlapping
 
