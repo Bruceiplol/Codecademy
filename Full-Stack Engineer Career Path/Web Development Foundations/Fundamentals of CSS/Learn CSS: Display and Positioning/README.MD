@@ -8,8 +8,8 @@
 - Z-index: push away for overlapping
 
 - Display: control how an element flows vertically and horizontally in a document.
-  - inline: take up as little space as possible, and they cannot have manually adjusted width or height. (eg. <strong> <em> <a>)
-  - block: take up the width of their container and can have manually adjusted heights. (eg. <h1> - <h6>, <p>, <div> and <footer>)
+  - inline: take up as little space as possible, and they cannot have manually adjusted width or height. (eg. strong, em,)
+  - block: take up the width of their container and can have manually adjusted heights. (eg. h1~h6, p, div and footer)
   - inline-block: can have set width and height, but they can also appear next to each other and do not take up their entire container width.
  
 - float: (left or right) move elements as far left or as far right as possible on a web page. (commonly used for wrapping text around an image. )
