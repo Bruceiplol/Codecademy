@@ -7,9 +7,9 @@ Color:
        Lightness: 50%, is normal lightness. towards 100% makes the color lighter, closer to white. towards 0% makes the color darker, closer to black.
  
 Opacity and Alpha
--hex colors, adding a two-digit hexadecimal value to the end of the six-digit representation. eg. #52BC8280; Hex opacity ranges from 00 (transparent) to FF (opaque).
--The RGB color scheme, use rgba, four values. eg. color: rgba(234, 45, 98, 0.33); 0 = completely transparent; 0.5 = half-transparent
--HSL color scheme, use hsla, four values. eg. color: hsla(34, 100%, 50%, 0.1); 0 = completely transparent; 0.5 = half-transparent
+- hex colors, adding a two-digit hexadecimal value to the end of the six-digit representation. eg. #52BC8280; Hex opacity ranges from 00 (transparent) to FF (opaque).
+- The RGB color scheme, use rgba, four values. eg. color: rgba(234, 45, 98, 0.33); 0 = completely transparent; 0.5 = half-transparent
+- HSL color scheme, use hsla, four values. eg. color: hsla(34, 100%, 50%, 0.1); 0 = completely transparent; 0.5 = half-transparent
 
 
 Foreground vs Background
