@@ -1,0 +1,191 @@
+html,body {
+    font-family: Helvetica, sans-serif;
+    font-size: 22px;
+    color: seashell;
+    background-color:black;
+    opacity:0.9;
+    margin:0;
+    padding:0;
+}
+
+/* navbar */
+nav {
+    height:69px;
+    width: 100%;
+    border-bottom: 1px solid seashell;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    z-index:10;
+    background-color:black;
+}
+
+.logo {
+    padding-left: 10px;
+    height: 50px;
+}
+
+nav ul {
+    display:inline-flex;
+    justify-content: flex-end;
+    width:100%;
+    margin: 0;
+    align-items: center;
+}
+
+nav ul li {
+    list-style: none;
+    padding: 10px;
+}
+
+nav ul li a {
+    color: seashell;
+    
+}
+
+a:hover {
+    color: seagreen;
+}
+
+a:active {
+    font-size: 21px;
+    transition: font-size .1s ease-in-out;
+}
+
+/* mission */
+.mission {
+    position:relative;
+    top:70px;
+    display:flex;
+    justify-content: center;
+    background-image: url(../image/img-mission-background.jpg);
+    background-size: cover;
+    height: 700px;
+    width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+}   
+
+
+.missionblock {
+    background-color: black;
+    width:100%
+}
+
+.missionblock h2, .missionblock h4{
+    text-align: center;
+    width:100%;
+    margin: 0;
+    padding: 10px;
+}
+
+/* tea of the month */
+.totm {
+    width: 1000px;
+    margin: 0 auto;
+    position:relative;
+    top:70px;
+    padding-top:90px;
+    padding-bottom: 75px;
+}
+
+.totm-heading h2, .totm-heading h4{
+    text-align: center;
+    width:100%;
+    margin: 0;
+    padding: 10px;
+}
+
+.totm-container {
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.totm-container-row2 {
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.teabox {
+    width:300px;
+}
+
+.teabox img {
+    height:200px;
+    width:300px;
+    margin:0;
+    padding:0;
+}
+
+h4.description {
+    width: 100%;
+    padding: 10px 0px;
+}
+
+.totm-container-row2 .teabox {
+    padding:25px;
+}
+
+/* location  */
+.location {
+    height: 600px;
+    width: 1200px;
+    background-image: url(../image/img-locations-background.jpg);
+    background-size: 100% 148%;
+    margin: 0 auto;
+    position:relative;
+    top:70px;
+    display:flex;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.location h2{
+    text-align: center;
+    width: 100%;
+    margin: 0;
+    padding:15px;
+}
+
+.location-container {
+    display: flex;
+    justify-content: center;
+    width:100%;
+}
+
+.location-box {
+    background-color: black;
+    opacity: 1;
+    height:300px;
+    width: 300px;
+    margin:20px;
+}
+
+.location-box h3, .location-box p {
+    text-align: center;
+}
+
+.location-box p {
+    line-height: 50px;
+}
+
+/* contact part */
+.contact {
+    position:relative;
+    top:70px;
+    height:200px;
+    text-align: center;
+}
+
+.contact h2{
+    margin:10px;
+}
+
+
+/* footer */
+footer p {
+    margin: 0;
+    padding:20px;
+}
