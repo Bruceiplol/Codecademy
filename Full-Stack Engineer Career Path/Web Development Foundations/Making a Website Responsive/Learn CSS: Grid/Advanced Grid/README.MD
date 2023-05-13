@@ -14,3 +14,4 @@ exmaple
     
  grid-template-columns: 1fr 3fr; 
 
+it means 2 columns 4 rows
