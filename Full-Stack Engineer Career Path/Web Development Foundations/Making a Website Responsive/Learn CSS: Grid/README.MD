@@ -46,7 +46,7 @@ Grid Gap:
 # for grid items
 Multiple Row Items
 declare on item that want it to start from which row or column and until which end row or column (end column should +1 for the row you want to cover)
-.item {
+eg. .item {
   grid-row-start: 1;
   grid-row-end: 3;
 }
@@ -58,7 +58,7 @@ Multiple column Items
 similar to grid-rows
 grid-column-start, grid-column-end and grid-column
 we can use the keyword span to start or end a column or row, relative to its other end.
-.item {
+eg. .item {
   grid-column: 4 / span 2;
 }
 = item grid column will span 2 column which is from fourth to fifth.
