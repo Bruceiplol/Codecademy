@@ -43,6 +43,7 @@ Grid Gap:
 - row-gap
 - gap: setting grid rows and grid columns gap all in one line (row gap then column gap)
 
+# for grid items
 Multiple Row Items
 declare on item that want it to start from which row or column and until which end row or column (end column should +1 for the row you want to cover)
 .item {
