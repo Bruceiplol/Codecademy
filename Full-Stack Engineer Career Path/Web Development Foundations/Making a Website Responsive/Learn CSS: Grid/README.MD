@@ -44,6 +44,7 @@ declare on item that want it to start from which row or column and until which e
   grid-row-start: 1;
   grid-row-end: 3;
 }
+
 exmaple = this item is covering row 1-2
 grid-row: setting grid rows start and end in one line
 grid-row: 1 / 3;
@@ -55,6 +56,7 @@ we can use the keyword span to start or end a column or row, relative to its oth
 .item {
   grid-column: 4 / span 2;
 }
+ 
  exmaple = item grid column will span 2 column which is from fourth to fifth.
 
 Grid Area
