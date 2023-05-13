@@ -14,8 +14,7 @@ Fraction:
 CSS grid relative sizing unit: fr
 Using fr makes it easier to prevent grid items from overflowing the boundaries of the grid.
 With a pre-setted height and width, fr is like splitting into parts
-eg.
-.grid {
+eg..grid {
   display: grid;
   border: 2px blue solid;
   width: 400px;
