@@ -47,7 +47,7 @@ Multiple Row Items
 
 - exmaple = this item is covering row 1-2
 
-grid-row: setting grid rows start and end in one line
+-grid-row: setting grid rows start and end in one line
 grid-row: 1 / 3;
 
 Multiple column Items
