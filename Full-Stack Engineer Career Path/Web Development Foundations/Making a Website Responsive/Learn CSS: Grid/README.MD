@@ -1,20 +1,20 @@
 # for grid container
-Creating Grid:
+1 .Creating Grid:
 - display: grid -- for a block-level grid
 - display: inline-grid -- for an inline grid
 
-Creating Columns and Rows
+2. Creating Columns and Rows
 grid-template-columns -- can set multiple px/ % (multiple = the numbers of columns)(the grid container set the width first)
 grid-template-rows -- can set multiple px/ % (multiple = the numbers of rows)(the grid container set the height first)
 
 Grid Template -- create grid rows and grid columns all in one line (in-order)
 eg. grid-template: 200px 300px / 20% 10% 70%;
 
-Fraction:
+3. Fraction:
 CSS grid relative sizing unit: fr
 Using fr makes it easier to prevent grid items from overflowing the boundaries of the grid.
 With a pre-setted height and width, fr is like splitting into parts
-eg..grid {
+eg. .grid {
   display: grid;
   border: 2px blue solid;
   width: 400px;
@@ -23,21 +23,16 @@ eg..grid {
 }
 so grid = 3 equal part of rows, 3 columns (1st column is 3/4 of 50%, 2nd is 50%, 3rd is 1/4 of 50%)
 
-Repeat function:
+4. Repeat function:
 The repeat function will duplicate the specifications for rows or columns a given number of times. 
-e.g. 
-.grid {
-  display: grid;
-  width: 300px;
-  grid-template-columns: repeat(3, 100px);
-}
+e.g. grid-template-columns: repeat(3, 100px);
 so grid = 3 equal 100px columns
 
-Minmax function:
+5. Minmax function:
 prevent a row or column from getting too big or too small. (resize based on the size of your web browser)
 e.g. grid-template-columns: 100px minmax(100px, 500px) 100px
 
-Grid Gap:
+6. Grid Gap:
 - column-gap
 - row-gap
 - gap: setting grid rows and grid columns gap all in one line (row gap then column gap)
