@@ -1,7 +1,7 @@
 Grid Template Areas
 - The grid-template-areas property allows you to name sections of your web page
-
-e.g grid-template-areas: "header header"
+exmaple
+ grid-template-areas: "header header"
                       
                       "nav nav" 
                       
