@@ -19,13 +19,13 @@ Height & Width: Minimum & Maximum
 
 Scaling Images and Videos
   usual format:
-  .container {
+  - .container {
   width: 50%;
   height: 200px;
   overflow: hidden;
 }
  
-.container img {
+- .container img {
   max-width: 100%;
   height: auto;
   display: block;
