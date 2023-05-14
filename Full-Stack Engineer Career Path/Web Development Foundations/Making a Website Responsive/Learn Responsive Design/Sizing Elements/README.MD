@@ -11,6 +11,22 @@ Percentages: Height & Width, Padding & Margin
   - often used to size box-model values, like width and height, padding, border, and margins.
   - also be used to set positioning properties (top, bottom, left, right).
   
-Width: Minimum & Maximum
+Height & Width: Minimum & Maximum
   - min-width — ensures a minimum width for an element.
   - max-width — ensures a maximum width for an element.
+  - min-height — ensures a minimum height for an element’s box.
+  - max-height — ensures a maximum height for an element’s box.
+
+Scaling Images and Videos
+  usual format:
+  .container {
+  width: 50%;
+  height: 200px;
+  overflow: hidden;
+}
+ 
+.container img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
