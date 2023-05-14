@@ -30,3 +30,11 @@ Scaling Images and Videos
   height: auto;
   display: block;
 }
+
+Scaling Background Images
+- body {
+- background-image: url('#');
+- background-repeat: no-repeat;
+- background-position: center;
+- background-size: cover;
+- }
