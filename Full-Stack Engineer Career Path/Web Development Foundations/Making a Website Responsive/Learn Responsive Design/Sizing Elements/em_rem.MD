@@ -1,9 +1,11 @@
+#what
 - rem and em units are computed into pixel values by the browser, based on font sizes in your design.
 - em units are based on the font size of the element they’re used on.
 - rem units are based on the font size of the html element.
 - em units can be influenced by font size inheritance from any parent element
 - rem units can be influenced by font size inheritance from browser font settings.
 
+#When
 - Use em units for sizing that should scale depending on the font size of an element other than the root.
 - Use rem units for sizing that doesn’t need em units, and that should scale depending on browser font size settings.
 - Use rem units unless you’re sure you need em units, including on font sizes.
