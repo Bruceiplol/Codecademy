@@ -1,5 +1,5 @@
 # Viewport Meta Tag
-<meta name="viewport" content="width=device-width, initial-scale=1"> -- place inside the head tag
+"<meta name="viewport" content="width=device-width, initial-scale=1">" -- place inside the head tag
 
 # Media Queries
 - @media only screen and (max-width: 480px) {
