@@ -18,3 +18,10 @@ console.log(resultArray);
 
 resultString = resultArray.join('').toUpperCase()
 console.log(resultString);
+
+// for...of = simplier
+//const hobbies = ['singing', 'eating', 'quidditch', 'writing'];
+ 
+//for (const hobby of hobbies) {
+//  console.log(`I enjoy ${hobby}.`);
+//}
