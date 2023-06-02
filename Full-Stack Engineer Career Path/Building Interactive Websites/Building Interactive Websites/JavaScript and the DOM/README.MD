@@ -1,4 +1,4 @@
-The document keyword grants access to the root of the DOM in JavaScript.
+The "document" keyword grants access to the root of the DOM in JavaScript.
 
 Select a specific element with CSS selectors:
 - .querySelector()
@@ -19,4 +19,5 @@ Interactivity:
 
 
 .children property returns a list of an element’s children 
+
 .parentNode property returns the element’s closest connected node in the direction towards the root.
