@@ -1,0 +1,87 @@
+1. Class Attribute:
+  in html: <h1 class="big">Title</h1> 
+  => JSX: <h1 className="big">Title</h1>
+
+2. Self-Closing Tags:
+  in html: <img>, <br>, <input>, etc,... 
+  => JSX: <img />, <br />, <input />, etc,...
+  adding slashing for self-closing tags
+
+3. Curly Braces in JSX -- make as JS function although still in HTML tag
+  root.render(<h1>2 + 3</h1>); => website displays "2+3"
+  root.render(<h1>{2 + 3}</h1>); => website displays "5" by js function
+
+4. Variables in JSX
+  by {}, you can access variables while inside of a JSX expression, even if those variables were declared outside of the JSX code block.
+  example1:
+  const name = 'Gerdo';
+  const greeting = <p>Hello, {name}!</p>; 
+  example2:
+  const theBestString = 'This text was accessed through a javascript variable';
+  root.render(<h1>{theBestString}</h1>);
+
+5. Variable Attributes in JSX
+  example:
+  const pics = {
+  panda: "http://bit.ly/1Tqltv5",
+  owl: "http://bit.ly/1XGtkM3",
+  owlCat: "http://bit.ly/1Upbczi"
+  }; 
+  const panda = (<img src={pics.panda} />);
+  const owl = (<img src={pics.owl} />);
+  const owlCat = (<img src={pics.owlCat} />);
+
+6. Event Listeners in JSX
+  example:
+  function clickAlert() {
+  alert('You clicked this image!');
+  }
+  <img onClick={clickAlert} />
+
+7. JSX Conditionals: If Statements
+  (1) write an if statement outside and not inject it into JSX.
+  example:
+  let img;
+  // if/else statement begins here:
+  if(coinToss() === 'heads') {
+    img = <img src={pics.kitty} />
+  } else {
+    img = <img src={pics.doggy} />
+  }
+  root.render(img);
+  (2) The Ternary Operator: condition x ? true y : false z
+  example:
+  const pics = {
+    kitty: 'https://content.codecademy.com/courses/React/react_photo-kitty.jpg',
+    doggy: 'https://content.codecademy.com/courses/React/react_photo-puppy.jpeg'
+  };
+  const img = <img src={pics[coinToss() === 'heads' ? 'kitty' : 'doggy']} />;
+  root.render(img);
+  (3) &&
+  && works best for conditionals that will sometimes do an action but other times do nothing at all. (instead of situations differntiation like example above)
+  example:
+  {!judgmental && <li>Nacho Cheez Straight Out The Jar</li>} -- if not judgmental: this <li> line will be displayed
+
+8. ".map" in JSX
+  useful to create a list:
+  const strings = ['Home', 'Shop', 'About Me'];
+  const listItems = strings.map(string => <li>{string}</li>);
+  <ul>{listItems}</ul>
+  
+Keys: The attribute’s value should be something unique, similar to an id attribute.
+  Not all lists need to have keys. A list needs keys if either of the following is true:
+    a. The list items have memory from one render to the next. For instance, when a to-do list renders, each item must “remember” whether it was checked off. The items shouldn’t get amnesia when they render.
+    b. A list’s order might be shuffled. For instance, a list of search results might be shuffled from one render to the next.
+  example:
+  const people = ['Rowe', 'Prevost', 'Gare'];
+  const peopleList = people.map((person,i) =>
+    // expression goes here:
+    <li key={'person_' + i}>{person}</li>
+  );
+  // root.render goes here:
+  root.render(<ul>{peopleList}</ul>);
+
+9. React.createElement
+const h1 = <h1>Hello world</h1>;
+is the same as 
+const h1 = React.createElement("h1",null,"Hello world");
