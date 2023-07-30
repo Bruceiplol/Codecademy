@@ -1,0 +1,25 @@
+Prop: Information that gets passed from one component to another is known as props.
+<Greeting name="Jamel" /> -- name could be anything
+<Greeting myInfo={["Astronaut", "Narek", "43"]} /> -- when passing a non-string info, need to have {}
+
+Render a Component's props
+function Button(props) {
+  return <button>{props.displayText}</button>;
+}
+it is the same as:
+function Button({displayText}) {
+  return <button>{displayText}</button>;
+}
+
+function Product(props) {
+  return (
+    <div>
+      <h1>{props.name}</h1>
+      <h2>{props.price}</h2>
+      <h3>{props.rating}</h3>
+    </div>       
+  );
+}
+function App() {
+  return <Product name="Apple Watch" price = {399} rating = "4.5/5.0" />;
+}
