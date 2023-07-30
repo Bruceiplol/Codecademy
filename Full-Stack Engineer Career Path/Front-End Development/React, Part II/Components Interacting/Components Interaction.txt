@@ -1,0 +1,46 @@
+1. Returning Another Component
+- {funcA}: This is used to reference and call a function directly in JSX. It is not creating a React component; instead, it's invoking the function and rendering its return value as part of the JSX output.
+
+- <funcA />: This is used to render a React component. It creates an instance of the funcA component, which can be a functional component or a class component, and renders it as part of the JSX output.
+  use <funcA /> to interact with different react component
+
+2. Apply a Component in a Render Function
+  our top-level file, App.js. Inside App.js, we imported components and returned them inside our App component—which are then exported to be rendered!
+  import Button from './Button';
+  function App() {return <Button />;};
+  export default App;
+
+example:
+//in NavBar.js
+import React from 'react';
+
+function NavBar() {
+    const pages = ['home', 'blog', 'pics', 'bio', 'art', 'shop', 'about', 'contact'];
+    const navLinks = pages.map(page => {
+      return (
+        <a href={'/' + page}>
+           &nbsp;{page}
+        </a>
+      )
+    });
+
+    return <nav>{navLinks}</nav>;
+}
+export default NavBar;
+
+//in ProfilePage.js
+import React from 'react';
+import NavBar from'./NavBar';
+
+function ProfilePage() {
+  return (
+    <div>
+        <NavBar />
+      <h1>All About Me!</h1>
+      <p>I like movies and blah blah blah blah blah</p>
+      <img src="https://content.codecademy.com/courses/React/react_photo-monkeyselfie.jpg" />
+    </div>
+  );
+}
+
+export default ProfilePage;
