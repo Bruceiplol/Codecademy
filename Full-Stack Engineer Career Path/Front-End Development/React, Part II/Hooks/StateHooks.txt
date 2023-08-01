@@ -1,0 +1,55 @@
+React Hooks, plainly put, are functions that let us manage the internal state of components and handle post-rendering side effects directly from our function components. Using Hooks, we can determine what we want to show the users by declaring how our user interface should look based on the state.
+
+React offers a number of built-in Hooks. A few of these include useState(), useEffect(), useContext(), useReducer(), and useRef(). 
+
+State Hook
+- The current state.
+- A function that updates the state.
+import React, { useState } from 'react';
+const [currentState, setCurrentState] = useState();
+eventlisteners:  <button onClick={() => setToggle('On')}>
+
+Initialize State
+const [isLoading, setIsLoading] = useState(true);
+
+Use State Setter Outside of JSX
+const handleChange = (event) => setEmail(event.target.value);
+
+example:
+import React, {useState} from 'react';
+
+// regex to match numbers between 1 and 10 digits long
+const validPhoneNumber = /^\d{1,10}$/;
+
+export default function PhoneNumber() {
+  // declare current state and state setter 
+  const [phone, setPhone] = useState('');
+  const handleChange = ({ target })=> {
+    const newPhone = target.value;
+    const isValid = validPhoneNumber.test(newPhone);
+    if (isValid) {
+        // update state 
+    }
+    // just ignore the event, when new value is invalid
+  };
+
+  return (
+    <div className='phone'>
+      <label for='phone-input'>Phone: </label>
+      <input id='phone-input' value = />
+    </div>
+  );
+}
+
+Summary:
+- With React, we feed static and dynamic data models to JSX to render a view to the screen.
+- Hooks are used to “hook into” the internal component state for managing dynamic data in function components.
+- We employ the State Hook using the code below. The currentState references the current value of the state and initialState initializes the value of the state for the component’s first render.
+const [currentState, stateSetter] = useState( initialState );
+- State setters can be called in event handlers.
+- We can define simple event handlers inline in our JSX and complex event handlers outside of our JSX.
+- We use a state setter callback function when our next value depends on our previous value.
+- We use arrays and objects to organize and manage related data that tend to change together.
+- Use the spread syntax on collections of dynamic data to copy the previous state into the next state like so: setArrayState((prev) => [ ...prev ]) and setObjectState((prev) => ({ ...prev })).
+- It’s best practice to have multiple, simpler states instead of having one complex state object.
+
