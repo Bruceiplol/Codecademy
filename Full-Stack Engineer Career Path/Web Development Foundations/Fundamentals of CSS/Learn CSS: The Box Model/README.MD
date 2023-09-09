@@ -8,6 +8,7 @@
   - 4 values: top right bottom left; 
   - 3 values: top left&right bottom; 
   - 2 values: top&bottom left&right
+  - Padding-block: only top and bottom padding
   
 - Margin is the amount of spacing outside of an element’s border.
   - margin: margin: 0 auto horizontally centers an element inside of its parent content area, if it has a width.
