@@ -2,5 +2,54 @@
 2. npm install --save react-router-dom@6
 
 In file:
-import { createBrowserRouter } from 'react-router-dom';
+import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route } from "react-router-dom"
 const router = createBrowserRouter( /* application routes are defined here */ );
+<RouterProvider router={ router } />
+
+
+Each <Route> component should include:
+1. A path prop indicating the exact URL path that will cause the route to render.
+2. An element prop describing the component to be rendered.
+
+example:
+const router = createBrowserRouter(createRoutesFromElements(
+  <Route path='/about' element={ <About/> } />
+));
+
+Both Link and NavLink components work much like anchor tags:
+They have a to prop that indicates the location to redirect the user to, similar to the anchor tag’s href attribute.
+They wrap some HTML to use as the display for the link.
+<Link to="/about">About</Link>
+<NavLink to="/about">About</NavLink>
+"/about" => absolute path (start from root)
+
+Dynamic Routes:
+const route = createBrowserRouter(createRoutesFromElement(
+  <Route path='/articles/:title' element={ <Article /> }/>
+))
+
+  Using useParmas hook:
+  import { Link, useParams } from 'react-router-dom';
+  
+  export default function Article() {
+    
+    let { title } = useParams();
+    // title will be equal to the string 'objects'
+  
+    // The title will be rendered in the <h1>
+    return (
+      <article>
+        <h1>{title}</h1>
+      </article>
+    );
+
+Render Child Route (expanding/ displaying the secret components at the same page):
+nested route + <Outlet />
+
+Redirect -- <Navigate>: (can be used for login logout)
+import { Navigate } from 'react-router-dom';
+<Navigate to='/' />
+
+
+
+
