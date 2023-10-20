@@ -6,7 +6,7 @@ import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route } 
 const router = createBrowserRouter( /* application routes are defined here */ );
 <RouterProvider router={ router } />
 
-
+======================================================================================================================================
 Each <Route> component should include:
 1. A path prop indicating the exact URL path that will cause the route to render.
 2. An element prop describing the component to be rendered.
@@ -15,7 +15,7 @@ example:
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path='/about' element={ <About/> } />
 ));
-
+==========================================================================================================================================
 Both Link and NavLink components work much like anchor tags:
 They have a to prop that indicates the location to redirect the user to, similar to the anchor tag’s href attribute.
 They wrap some HTML to use as the display for the link.
@@ -23,6 +23,7 @@ They wrap some HTML to use as the display for the link.
 <NavLink to="/about">About</NavLink>
 "/about" => absolute path (start from root)
 
+============================================================================================================================================
 Dynamic Routes:
 const route = createBrowserRouter(createRoutesFromElement(
   <Route path='/articles/:title' element={ <Article /> }/>
@@ -46,10 +47,76 @@ const route = createBrowserRouter(createRoutesFromElement(
 Render Child Route (expanding/ displaying the secret components at the same page):
 nested route + <Outlet />
 
-Redirect -- <Navigate>: (can be used for login logout)
+===============================================================================================================================================
+Redirect -- <Navigate>: (can be used for login logout) -- declarative
 import { Navigate } from 'react-router-dom';
 <Navigate to='/' />
 
+useNavigate: -- imperative
+For example:
 
+navigate(-1) - navigate to the previous URL in the history stack.
+navigate(1) - navigate to the next URL in the history stack.
+navigate(-3) - navigate 3 URLs back in the history stack.
 
+import { useNavigate } from `react-router-dom`
 
+export const BackButton = () => {
+  const navigate = useNavigate()
+
+  return (
+    <button onClick={() => navigate(-1)}>
+      Go Back
+    </button>
+  )
+}
+
+==================================================================================================================================================
+Query Parameters:
+uery parameters can be useful in determining which content to display to our user and React Router provides a mechanism for grabbing query parameter values with the useSearchParams() hook.
+
+import { useSearchParams } from 'react-router-dom'
+
+// Rendered when a user visits "/list?order=DESC"
+export const SortedList = (numberList) => {
+  const [ searchParams, setSearchParams ] = useSearchParams();
+  const sortOrder = searchParams.get('order');
+
+  if (sortOrder === 'ASC') {
+    // render the numberList in ascending order
+  } else if (sortOrder === 'DESC') {
+    // render the numberList in descending order
+  } else {
+    // render the numberList as is
+  }
+}
+
+import { useSearchParams } from 'react-router-dom';
+
+// Rendered when a user visits "/list"
+export const List = (numberList) => {
+  const [ searchParams, setSearchParams ] = useSearchParams();
+
+  // render the numberList in ascending order
+  <button click={ () => setSearchParams( {order: 'ASC'} ) }>
+    Sort 
+  </button>
+}
+
+import { useNavigate, createSearchParams } from 'react-router-dom';
+// get navigate function
+const navigate = useNavigate();
+
+// define an object where the key is is the query parameter name and value is query parameter value
+const searchQueryParams = {
+  order: 'ASC'
+}
+
+// use createSearchParams which takes an object and transforms it to a query string of the form order=ASC
+const searchQueryString = createSearchParams(searchQueryParams);
+
+// force a navigate by passing in an object with pathname indicating that path to navigate and search indicating the query parameters to append
+navigate({
+  pathname:'/list',
+  search: `?${searchQueryString}`
+})
