@@ -21,6 +21,10 @@ They have a to prop that indicates the location to redirect the user to, similar
 They wrap some HTML to use as the display for the link.
 <Link to="/about">About</Link>
 <NavLink to="/about">About</NavLink>
+
+Nav can use className and style prop, able to pass function into className (conditional style)
+e.g <NavLink to="." end style={({ isActive }) => isActive ? activeStyles : null}> Info </NavLink>
+
 "/about" => absolute path (start from root)
 
 ============================================================================================================================================
