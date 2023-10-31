@@ -26,7 +26,7 @@ Nav can use className and style prop, able to pass function into className (cond
 e.g <NavLink to="." end style={({ isActive }) => isActive ? activeStyles : null}> Info </NavLink>
 
 "/about" => absolute path (start from root)
-
+"about" => relative path (if nested => auto next path level)
 ============================================================================================================================================
 Dynamic Routes:
 const route = createBrowserRouter(createRoutesFromElement(
