@@ -50,6 +50,9 @@ const route = createBrowserRouter(createRoutesFromElement(
 
 Render Child Route (expanding/ displaying the secret components at the same page):
 nested route + <Outlet />
+parent route = share UI (shared layout: navbar or footer) -- <Link /> or < NavLink /> + < Outlet />
+
+
 
 ===============================================================================================================================================
 Redirect -- <Navigate>: (can be used for login logout) -- declarative
