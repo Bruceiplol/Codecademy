@@ -81,14 +81,14 @@ export const BackButton = () => {
     </button>
   )
 }
---------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------
 <Link
     to=".."
     relative="path"
     className="back-button"
 >&larr; <span>Back</span></Link>
 
-----------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------
 <Link /> prop: state={{ search: searchParams.toString() } -- saving state between one link(URL) and the next
 next component: receiving state from above: useLocation()
 eg. {pathname: "/vans/5", search: "", hash: "", state: {search: "type=luxury"}, key: "emy8w7js"}
@@ -284,3 +284,36 @@ use redirect() -- but it needs to happend in every protected route's loader
     return null
   }}
 />
+------------------------------------------------------------------------------------
+useNavigate: similar to redirect, but can only operate inside the component function
+
+import { useNavigate } from 'react-router-dom';
+
+inside component function
+const navigate = useNavigate()
+navigate("/somePath")
+
+===================================================================================================================================================================================
+Retrieving info from url:
+If there is an message in url: "/login?message=You must log in first."
+
+export function loader({ request }) {
+  return new URL(request.url).searchParams.get("message");
+}
+
+then import loader to the app for the element.
+then const the message inside the component.
+
+===================================================================================================================================================================================
+<Form /> react-router-dom component (different from <form/>)
+Form would not need to deal with state to storing form data, handleChange, handleSubmit
+
+action prop in Route (similar to loader)
+react router action (normally action prop should send data to backend such as php file)
+If we only working on front-end, react router action function intercept the request and abel to access inside the action function
+
+useActionData hook inside the function component to get Action return
+
+replace prop in Form:
+forget the current Route in the history stack
+<Form method="post" className="login-form" replace> </Form>
