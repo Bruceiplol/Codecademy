@@ -237,11 +237,12 @@ navigate({
 })
 
 ===================================================================================================================================================================================
-Handle 404 Not Found to users:
-<Route path="*" element={<h1>Page not found!</h1>} /> -- path as * to catch all pages out of scope except our routes
+### Handle 404 Not Found to users:
+<Route path="*" element={<h1>Page not found!</h1>} /> 
+path as * to catch all pages out of scope except our routes
 
 ===================================================================================================================================================================================
-Fetching Data:
+### Fetching Data -- loader prop + useLoaderData() hook
 instead of useing React.useEffect to fetch, use Loader. (Waterfall request => Parallel loaders)
 useEffect: /about => /van => loading => fetching from api => display 
 loader: /about => delay a little => /van with loaded data immediately (skipped loading and error state) -- delay rendering the element until the loader has finished its tasks
@@ -276,8 +277,9 @@ export default function HomePage() {
 }
 
 normally loader function return getAPI request, then we can have const data = useLoaderData()
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Handling Error:
+
+----
+### Handling Error
 errorElement prop in Route
 <Route path="/" element={<HomePage />} **errorElement={<Error />}** loader={homePageLoader} />
 
@@ -296,8 +298,8 @@ export default function Error() {
     )
 }
 
-===================================================================================================================================================================================
-Protected Routes:
+---
+### Protected Routes:
 Prevent rendering to unauthorized users
 Approach: If the user has not logged in, stop data fetching by blocking components from rendering and send to Login page.
           Since fetching is happending inside the components, if those components nevenr render, the fetching never happens.
@@ -330,7 +332,9 @@ use redirect() -- but it needs to happend in every protected route's loader
     return null
   }}
 />
-------------------------------------------------------------------------------------
+
+---
+### useNavigate()
 useNavigate: similar to redirect, but can only operate inside the component function
 
 import { useNavigate } from 'react-router-dom';
@@ -339,8 +343,8 @@ inside component function
 const navigate = useNavigate()
 navigate("/somePath")
 
-===================================================================================================================================================================================
-Retrieving info from url:
+---
+### Retrieving info from url:
 If there is an message in url: "/login?message=You must log in first."
 
 export function loader({ request }) {
@@ -350,7 +354,8 @@ export function loader({ request }) {
 then import loader to the app for the element.
 then const the message inside the component.
 
-===================================================================================================================================================================================
+---
+### \<Form /> 
 <Form /> react-router-dom component (different from <form/>)
 Form would not need to deal with state to storing form data, handleChange, handleSubmit
 
