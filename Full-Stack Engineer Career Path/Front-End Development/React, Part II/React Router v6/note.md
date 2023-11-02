@@ -15,7 +15,7 @@ const router = createBrowserRouter( /* application routes are defined here */ );
 Each <Route> component should include:
 1. A **path** prop indicating the exact URL path that will cause the route to render.
 2. An **element** prop describing the component to be rendered.
-
+<br>
 example:
 ```javascript
 const router = createBrowserRouter(createRoutesFromElements(
@@ -25,21 +25,27 @@ const router = createBrowserRouter(createRoutesFromElements(
 
 ---
 ### Link and NavLink
-Both Link and NavLink components work much like anchor tags:<br>
+Both **Link** and **NavLink** components work much like anchor tags:<br>
 They have a **to** prop (and className prop)that indicates the location to redirect the user to, similar to the anchor tag’s href attribute.<br>
 They wrap some HTML to use as the display for the link.
+
 ```javascript
 <Link to="/about">About</Link>
 <NavLink to="/about">About</NavLink>
 ```
+<br>
+
 **NavLink can also use style prop**, and able to pass function into className (conditional style)<br>
+<br>
+
 e.g 
+
 ```javascript
 <NavLink to="." end style={({ isActive }) => isActive ? activeStyles : null}> Info </NavLink>
 ```
-(When activeStyle is applied to the NavLink (if there is index prop in <Route/>), **end** prop is used to stop isActive status for the index page)<br><br>
-"/about" => absolute path (start from root)<br>
-"about" => relative path (if nested => auto next path level)
+(When **activeStyle** is applied to the NavLink (if there is **index** prop in <Route/>), **end** prop is used to stop isActive status for the index page)<br><br>
+"/about" => **absolute path** (start from root)<br>
+"about" => **relative path** (if nested => auto next path level)
 
 ---
 ### Dynamic Routes
@@ -148,6 +154,7 @@ useful tools:<br>
 - searchParams.toString()<br><br>
 
 e.g.
+
 ```javascript
 //inside component
 const typeFilter = searchParams.get("type")
@@ -158,13 +165,15 @@ const displayedCharacters = typeFilter
 const const charEls = displayedCharacters.map(char => (<>{char.xxxx}</>)
 ```
 
-For UI: 
-hardcoding (single filter):
-    using <Link to"?type=xxx" /> for clicking filter ("clear" = link to ".")
-    <button onClick={() => setSearchParams({type: xxx})} ("clear" = setSearchParams({}))
-
-imperative coding (merge existing params -- multiple params filter):
+#### For UI:
+hardcoding (single filter):<br>
+- using <Link to"?type=xxx" /> for clicking filter ("clear" = link to ".")
+- <button onClick={() => setSearchParams({type: xxx})} ("clear" = setSearchParams({}))
+<br>
+imperative coding (merge existing params -- multiple params filter):<br>
 1. 
+
+```javascript
 function genNewSearchParamString(key, value) {
     const sp = new URLSearchParams(searchParams)
     if (value === null) {
@@ -176,8 +185,10 @@ function genNewSearchParamString(key, value) {
   }
 
 <Link to={genNewSearchParamString("type", "jedi")}>Jedi</Link>
+```
 
-2.
+2. 
+```javascript
 function handleFilterChange(key, value) {
     setSearchParams(prevParams => {
       if (value === null) {
@@ -189,7 +200,12 @@ function handleFilterChange(key, value) {
     })
   }
 <button onClick={() => handleFilterChange("type", "jedi")}>Jedi</button>
-------------------------------------------------------------------------------------------------------------
+```
+
+---
+example
+
+```javascript
 import { useSearchParams } from 'react-router-dom'
 
 // Rendered when a user visits "/list?order=DESC"
@@ -205,7 +221,9 @@ export const SortedList = (numberList) => {
     // render the numberList as is
   }
 }
+```
 
+```javascript
 import { useSearchParams } from 'react-router-dom';
 
 // Rendered when a user visits "/list"
@@ -217,7 +235,9 @@ export const List = (numberList) => {
     Sort 
   </button>
 }
+```
 
+```javascript
 import { useNavigate, createSearchParams } from 'react-router-dom';
 // get navigate function
 const navigate = useNavigate();
@@ -235,31 +255,41 @@ navigate({
   pathname:'/list',
   search: `?${searchQueryString}`
 })
+```
 
-===================================================================================================================================================================================
+---
 ### Handle 404 Not Found to users:
-<Route path="*" element={<h1>Page not found!</h1>} /> 
-path as * to catch all pages out of scope except our routes
+```javascript
+<Route path="*" element={<h1>Page not found!</h1>} />
+```
+path as **"*"** to catch all pages out of scope except our routes
 
-===================================================================================================================================================================================
+---
 ### Fetching Data -- loader prop + useLoaderData() hook
-instead of useing React.useEffect to fetch, use Loader. (Waterfall request => Parallel loaders)
-useEffect: /about => /van => loading => fetching from api => display 
-loader: /about => delay a little => /van with loaded data immediately (skipped loading and error state) -- delay rendering the element until the loader has finished its tasks
+instead of useing React.useEffect to fetch, use Loader. (Waterfall request => Parallel loaders)<br>
+useEffect: <br>
+/about => /van => loading => fetching from api => display <br><br>
+loader: <br>
+/about => delay a little => /van with loaded data immediately (skipped loading and error state) -- delay rendering the element until the loader has finished its tasks<br>
 
 1. export a loader function from the page that fetches data that the page will need.
 2. pass a loader prop to the Route that renders that page and pass in the loader function
 3. use the useLoaderData hook in the component to get the data
+<br>
 
 eg.
-App:
+
+```javascript
+//App:
 import HomePage, { loader as homePageLoader } from "./Home"
 
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path="/" element={<HomePage />} loader={homePageLoader} />
 ))
+```
 
-child component:
+```javascript
+//child component:
 import { useLoaderData } from "react-router-dom"
 
 export function loader() {
@@ -275,16 +305,23 @@ export default function HomePage() {
     </main>
   );
 }
+```
 
 normally loader function return getAPI request, then we can have const data = useLoaderData()
 
 ----
 ### Handling Error
+
 errorElement prop in Route
+
+```javascript
 <Route path="/" element={<HomePage />} **errorElement={<Error />}** loader={homePageLoader} />
+```
 
 inspecting error message:
-in child component:
+
+```javascript
+//in child component:
 import { useRouteError } from "react-router-dom"
 
 export default function Error() {
@@ -297,18 +334,21 @@ export default function Error() {
         </>
     )
 }
+```
 
 ---
 ### Protected Routes:
-Prevent rendering to unauthorized users
-Approach: If the user has not logged in, stop data fetching by blocking components from rendering and send to Login page.
-          Since fetching is happending inside the components, if those components nevenr render, the fetching never happens.
+Prevent rendering to unauthorized users<br>
+Approach: If the user has not logged in, stop data fetching by blocking components from rendering and send to Login page.<br>
+          Since fetching is happending inside the components, if those components nevenr render, the fetching never happens.<br><br>
 
 Wrap the protected route inside Authorize Route
+```javascript
 <Route element={<AuthRequired />}>
   <Route path="protected" element={<h1>Super secret info here</h1>} />
 </Route>
-
+```
+```javascript
 import { Outlet, Navigate } from "react-router-dom"
 
 export default function AuthRequired() {
@@ -318,9 +358,10 @@ export default function AuthRequired() {
     }
     return <Outlet />
 }
-
-For loaders to load data in protected routes (parallel loaders):
+```
+For loaders to load data in protected routes (parallel loaders):<br>
 use redirect() -- but it needs to happend in every protected route's loader
+```javascript
 <Route
   path="protected"
   element={<h1>Super secret info here</h1>}
@@ -332,26 +373,28 @@ use redirect() -- but it needs to happend in every protected route's loader
     return null
   }}
 />
+```
 
 ---
-### useNavigate()
-useNavigate: similar to redirect, but can only operate inside the component function
-
+### useNavigate() hook
+useNavigate: similar to redirect, but can only operate inside the component function<br><br>
+```javascript
 import { useNavigate } from 'react-router-dom';
 
-inside component function
-const navigate = useNavigate()
-navigate("/somePath")
-
+//inside component function
+  const navigate = useNavigate()
+  navigate("/somePath")
+```
 ---
 ### Retrieving info from url:
 If there is an message in url: "/login?message=You must log in first."
-
+```javascript
+//in the component file but outside the component function
 export function loader({ request }) {
   return new URL(request.url).searchParams.get("message");
 }
-
-then import loader to the app for the element.
+```
+then import loader to the app Route \<Route path="/login" element="<Login />" loader={loginLoader} />.<br>
 then const the message inside the component.
 
 ---
