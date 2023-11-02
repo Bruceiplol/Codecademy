@@ -1,11 +1,13 @@
+### Install
 1. npm install
 2. npm install --save react-router-dom@6
-
+<br>
 In file:
+``
 import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route } from "react-router-dom"
 const router = createBrowserRouter( /* application routes are defined here */ );
 <RouterProvider router={ router } />
-
+``
 ===================================================================================================================================================================================
 Each <Route> component should include:
 1. A path prop indicating the exact URL path that will cause the route to render.
