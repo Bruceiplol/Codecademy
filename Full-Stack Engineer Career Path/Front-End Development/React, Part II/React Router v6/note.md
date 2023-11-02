@@ -1,77 +1,106 @@
 ### Install
 1. npm install
 2. npm install --save react-router-dom@6
-<br>
-In file:
-``
+
+---   
+### Setup
+In top-level file (App.js):
+```javascript
 import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route } from "react-router-dom"
 const router = createBrowserRouter( /* application routes are defined here */ );
 <RouterProvider router={ router } />
-``
-===================================================================================================================================================================================
+```
+
+---
 Each <Route> component should include:
-1. A path prop indicating the exact URL path that will cause the route to render.
-2. An element prop describing the component to be rendered.
+1. A **path** prop indicating the exact URL path that will cause the route to render.
+2. An **element** prop describing the component to be rendered.
 
 example:
+```javascript
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path='/about' element={ <About/> } />
 ));
+```
 
-===================================================================================================================================================================================
-Both Link and NavLink components work much like anchor tags:
-They have a to prop that indicates the location to redirect the user to, similar to the anchor tag’s href attribute.
+---
+### Link and NavLink
+Both Link and NavLink components work much like anchor tags:<br>
+They have a **to** prop (and className prop)that indicates the location to redirect the user to, similar to the anchor tag’s href attribute.<br>
 They wrap some HTML to use as the display for the link.
+```javascript
 <Link to="/about">About</Link>
 <NavLink to="/about">About</NavLink>
-
-Nav can use className and style prop, able to pass function into className (conditional style)
-e.g <NavLink to="." end style={({ isActive }) => isActive ? activeStyles : null}> Info </NavLink>
-
-"/about" => absolute path (start from root)
+```
+**NavLink can also use style prop**, and able to pass function into className (conditional style)<br>
+e.g 
+```javascript
+<NavLink to="." end style={({ isActive }) => isActive ? activeStyles : null}> Info </NavLink>
+```
+(When activeStyle is applied to the NavLink (if there is index prop in <Route/>), **end** prop is used to stop isActive status for the index page)<br><br>
+"/about" => absolute path (start from root)<br>
 "about" => relative path (if nested => auto next path level)
 
-===================================================================================================================================================================================
-Dynamic Routes:
+---
+### Dynamic Routes
+```javascript
 const route = createBrowserRouter(createRoutesFromElement(
   <Route path='/articles/:title' element={ <Article /> }/>
 ))
+```
 
-  Using useParmas hook:
-  import { Link, useParams } from 'react-router-dom';
+Using **useParmas** hook in the component:
+```javascript
+import { Link, useParams } from 'react-router-dom';
   
-  export default function Article() {
+export default function Article() {
     
-    let { title } = useParams();
-    // title will be equal to the string 'objects'
+  let { title } = useParams();
+  // title will be equal to the string 'objects'
   
-    // The title will be rendered in the <h1>
-    return (
-      <article>
-        <h1>{title}</h1>
-      </article>
-    );
+  // The title will be rendered in the <h1>
+  return (
+    <article>
+      <h1>{title}</h1>
+    </article>
+  );
+```
+---
+Render Child Route (expanding/ displaying the secret components at the same page):<br>
+nested route + \< Outlet /> <br>
+parent route = share UI (shared layout: navbar or footer) -- usually <Link /> or < NavLink /> + < Outlet /> <br>
 
-Render Child Route (expanding/ displaying the secret components at the same page):
-nested route + <Outlet />
-parent route = share UI (shared layout: navbar or footer) -- <Link /> or < NavLink /> + < Outlet />
-
-Passing saved state (info) to child
-parent: <Outlet context={{ someState }} />
-child: import { useOutletContext } from "react-router-dom";
-       const { someState } = useOutletContext();
-===================================================================================================================================================================================
-Redirect -- <Navigate>: (can be used for login logout) -- declarative
+---
+Passing saved **state** (info) to child <br>
+parent: 
+```javascript
+<Outlet context={{ someState }} />
+```
+child: 
+```javascript
+import { useOutletContext } from "react-router-dom";
+//inside component
+const { someState } = useOutletContext();
+```
+       
+---
+### Navigate
+Redirect -- \<Navigate />: (can be used for login logout) -- declarative
+```javascript
 import { Navigate } from 'react-router-dom';
+//inside component
 <Navigate to='/' />
+```
 
-useNavigate: -- imperative
-For example:
-
-navigate(-1) - navigate to the previous URL in the history stack.
-navigate(1) - navigate to the next URL in the history stack.
-navigate(-3) - navigate 3 URLs back in the history stack.
-
+**useNavigate()**: -- imperative <br>
+For example:<br>
+```javascript
+navigate(-1) //- navigate to the previous URL in the history stack.
+navigate(1) //- navigate to the next URL in the history stack.
+navigate(-3) //- navigate 3 URLs back in the history stack.
+```
+example:
+```javascript
 import { useNavigate } from `react-router-dom`
 
 export const BackButton = () => {
@@ -83,36 +112,51 @@ export const BackButton = () => {
     </button>
   )
 }
---------------------------------------------------------------------------------------------------------------
+```
+---
+Another way:
+```javascript
 <Link
     to=".."
     relative="path"
     className="back-button"
 >&larr; <span>Back</span></Link>
+```
 
-----------------------------------------------------------------------------------------------------------------
-<Link /> prop: state={{ search: searchParams.toString() } -- saving state between one link(URL) and the next
-next component: receiving state from above: useLocation()
-eg. {pathname: "/vans/5", search: "", hash: "", state: {search: "type=luxury"}, key: "emy8w7js"}
+---
+### Link state prop & useLocation() hook
+By using the **state** prop, you can pass and retrieve data between components during navigation using React Router.<br><br>
+\<Link /> prop: **state={{ search: searchParams.toString() }** -- saving state between one link(URL) and the next<br>
+next component: receiving state from above: **useLocation()**<br><br>
+eg. {pathname: "/vans/5", search: "", hash: "", state: {search: "type=luxury"}, key: "emy8w7js"}<br>
 
+```javascript
 const search = location.state?.search || ""
 <Link to={`..${search}`} /> -- back to previous page with saved filtered
+```
 
-===================================================================================================================================================================================
-Query Parameters:
-uery parameters can be useful in determining which content to display to our user and React Router provides a mechanism for grabbing query parameter values with the useSearchParams() hook.
-Sorting, Filtering, Pagination
-Begins with "?"
-Seperate by "&"
-searchParams = URLsearchParams {}
-useful tools: searchParams.get("")/ searchParams.toString()
-e.g. const typeFilter = searchParams.get("type")
+---
+### Query Parameters
+uery parameters can be useful in determining which content to display to our user and React Router provides a mechanism for grabbing query parameter values with the useSearchParams() hook.<br>
+- Sorting, Filtering, Pagination
+- Begins with "?"
+- Seperate by "&"
+- searchParams = URLsearchParams {}
+<br>
+useful tools:<br>
+- searchParams.get("")<br>
+- searchParams.toString()<br><br>
 
-     const displayedCharacters = typeFilter 
-       ? swCharacters.filter(char => char.type.toLowerCase() === typeFilter)
-       : swCharacters
-     const const charEls = displayedCharacters
-    .map(char => (<>{char.xxxx}</>)
+e.g.
+```javascript
+//inside component
+const typeFilter = searchParams.get("type")
+
+const displayedCharacters = typeFilter 
+    ? swCharacters.filter(char => char.type.toLowerCase() === typeFilter)
+    : swCharacters
+const const charEls = displayedCharacters.map(char => (<>{char.xxxx}</>)
+```
 
 For UI: 
 hardcoding (single filter):
