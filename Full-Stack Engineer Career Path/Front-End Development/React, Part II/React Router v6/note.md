@@ -356,27 +356,33 @@ then const the message inside the component.
 
 ---
 ### \<Form /> 
-<Form /> react-router-dom component (different from <form/>)
-Form would not need to deal with state to storing form data, handleChange, handleSubmit
+\<Form /> react-router-dom component (different from \<form />)<br>
+Form would not need to deal with state to storing form data, handleChange, handleSubmit<br><br>
 
-action prop in Route (similar to loader)
-react router action (normally action prop should send data to backend such as php file)
-If we only working on front-end, react router action function intercept the request and abel to access inside the action function
+#### action prop + useActionData() hook
+**action** prop in Route (similar to loader)<br>
+react router action (normally action prop should send data to backend such as php file)<br>
+If we only working on front-end, react router action function intercept the request and abel to access inside the action function<br><br>
 
-useActionData hook inside the function component to get Action return
+**useActionData** hook inside the function component to get Action return<br><br>
 
-replace prop in Form:
+#### replace prop in Form
 forget the current Route in the history stack
+```javascript
 <Form method="post" className="login-form" replace> </Form>
+```
 
-useNavigation():
-since our loading in loader is in action funtion (getting API), we cannot access data inside it
-utility to setup status prop in our component, give us info about the status about the loader
-
+#### useNavigation() hook
+since our loading in loader is in action funtion (getting API), we cannot access data inside it<br>
+utility to setup status prop in our component, give us info about the status about the loader<br><br>
+```javascript
 const navigation = useNavigation()
+```
+
 able to access the following:
+```javascript
 {
-  navigation.state; -- idle/ submitting
+  navigation.state; //-- idle/ submitting
   navigation.location;
   navigation.formData;
   navigation.json;
@@ -384,4 +390,5 @@ able to access the following:
   navigation.formAction;
   navigation.formMethod;
 }
-============================================================================================================================================================================================
+```
+---
