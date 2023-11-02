@@ -435,3 +435,17 @@ able to access the following:
 }
 ```
 ---
+### defer
+when to use:<br>
+If one of your routes' loaders needs to retrieve some data that is quite slow.<br><br>
+Usually it supposes to render the element after the loader loading finished,<br>
+defer loading the slow data so that it will not block the User Interface => smoother UX
+
+```javascript
+import { useLoaderData, defer } from "react-router-dom"
+
+export async function loader() {
+    const weatherPromise = getWeather() //cancel out await, so the value become a promise return
+    return defer({weather: weatherPromise}) //defer need to be passed in a object, key can be whatever name, value to be the promise
+}
+```
