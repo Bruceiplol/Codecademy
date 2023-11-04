@@ -435,7 +435,7 @@ able to access the following:
 }
 ```
 ---
-### defer
+### defer & Await
 when to use:<br>
 If one of your routes' loaders needs to retrieve some data that is quite slow.<br><br>
 Usually it supposes to render the element after the loader loading finished,<br>
@@ -449,3 +449,65 @@ export async function loader() {
     return defer({weather: weatherPromise}) //defer need to be passed in a object, key can be whatever name, value to be the promise
 }
 ```
+<br>
+Since we did not await to get API call and returning a Promise object, useLoaderData no longer fetch the API data.<br>
+loader data became => {weather: Promise {}}<br><br>
+
+**Await Component**:
+- allow us to surrond the codes that we will be waiting for when the component first renders
+- it will only conditional render only after the data has finished loading
+
+```javascript
+import { useLoaderData, defer, Await } from "react-router-dom"
+
+//inside component function return()
+<Await resolve={loaderData.weather}>
+  {(loadedWeather) => {
+    const iconUrl = `http://openweathermap.org/img/wn/${loadedWeather.weather[0].icon}@2x.png`
+    return (
+            <>
+              <h3>{loadedWeather.main.temp}ºF</h3>
+              <img src={iconUrl} />
+            </>
+            )
+    }}
+</Await>
+```
+1. passing the Promise into Await resolve prop
+2. after await component resolving the promise, we can call a render prop child function {()=>{}}
+3. passed params can be anything name, it substitues the original loaderData
+4. so finally we can return the components
+
+**Suspense Component** (from react library)
+suspense rendering of your react app until something has finished<br>
+fixing await bug<br>
+
+```javascript
+import React, {Suspense} from "react"
+
+//inside component function return()
+<Suspense fallback={<h2>Loading weather...</h2>}>
+  <Await resolve={loaderData.weather}>
+    {(loadedWeather) => {
+      const iconUrl = `http://openweathermap.org/img/wn/${loadedWeather.weather[0].icon}@2x.png`
+      return (
+              <>
+                <h3>{loadedWeather.main.temp}ºF</h3>
+                <img src={iconUrl} />
+              </>
+              )
+      }}
+  </Await>
+</Suspense>
+```
+
+**fallback** prop (loading status): give react an element to render while it's waiting for the other component that is suspending to finish<br><br>
+
+If there is two getAPIs, we can turn the loader function into async function, put await in front of the getAPI calls that is more crucial or want to load it faster<br>
+so the component would render the getUser as soon as await getAPI is finished while the other one is still resolving
+```
+export async function loader() {
+    return defer({ vans: getVans(), user: await getUser() })
+}
+```
+---
