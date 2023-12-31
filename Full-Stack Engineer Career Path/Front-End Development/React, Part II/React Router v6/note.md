@@ -44,7 +44,7 @@ e.g
 ```javascript
 <NavLink to="." end style={({ isActive }) => isActive ? activeStyles : null}> Info </NavLink>
 ```
-(to="." => link to current relative path)
+(to="." => link to current relative path)<br>
 (When **activeStyle** is applied to the NavLink (if there is **index** prop in <Route/>), **end** prop is used to stop isActive status for the index page)<br><br>
 "/about" => **absolute path** (start from root)<br>
 "about" => **relative path** (if nested => auto next path level)
