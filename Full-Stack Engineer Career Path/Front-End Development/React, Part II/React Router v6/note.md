@@ -77,9 +77,19 @@ nested route + \< Outlet /> <br>
 parent route = share UI (shared layout: navbar or footer) -- usually <Link /> or < NavLink /> + < Outlet /> <br>
 
 ---
+index:
+```javascript
+<Route element={<Layout />}>
+  <Route path="/" element={<Home />} />
+  <Route path="/about" element={<About />} />
+</Route>
+```
+
 Passing saved **state** (info) to child <br>
 parent: 
 ```javascript
+import { Outlet } from "react-router-dom"
+
 <Outlet context={{ someState }} />
 ```
 child: 
