@@ -35,7 +35,7 @@ They wrap some HTML to use as the display for the link.
 ```
 <br>
 
-**NavLink can also use style prop**, and able to pass function into className (conditional style)<br>
+NavLink can also use **style prop**, and able to **pass function** into className (conditional style)<br>
 <br>
 
 e.g 
