@@ -17,6 +17,7 @@ Each <Route> component should include:
 2. An **element** prop describing the component to be rendered.
 <br>
 example:
+
 ```javascript
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path='/about' element={ <About/> } />
@@ -47,13 +48,6 @@ e.g
 "/about" => **absolute path** (start from root)<br>
 "about" => **relative path** (if nested => auto next path level)
 
-index page for the nested route(layout) -- automatically display then outlet and share the same url
-```javascript
-<Route path="host" element={<HostLayout />}>
-  <Route index element={<Dashboard />} />
-</Route>
-```
-
 ---
 ### Dynamic Routes
 ```javascript
@@ -82,6 +76,14 @@ export default function Article() {
 Render Child Route (expanding/ displaying the secret components at the same page):<br>
 nested route + \< Outlet /> <br>
 parent route = share UI (shared layout: navbar or footer) -- usually <Link /> or < NavLink /> + < Outlet /> <br>
+
+---
+index page for the nested route(layout) -- automatically display then outlet and share the same url
+```javascript
+<Route path="host" element={<HostLayout />}>
+  <Route index element={<Dashboard />} />
+</Route>
+```
 
 ---
 index:
