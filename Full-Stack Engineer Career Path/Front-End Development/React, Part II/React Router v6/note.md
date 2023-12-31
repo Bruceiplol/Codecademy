@@ -47,6 +47,13 @@ e.g
 "/about" => **absolute path** (start from root)<br>
 "about" => **relative path** (if nested => auto next path level)
 
+index page for the nested route(layout) -- automatically display then outlet and share the same url
+```javascript
+<Route path="host" element={<HostLayout />}>
+  <Route index element={<Dashboard />} />
+</Route>
+```
+
 ---
 ### Dynamic Routes
 ```javascript
