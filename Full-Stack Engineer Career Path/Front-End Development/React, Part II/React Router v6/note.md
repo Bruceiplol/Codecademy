@@ -338,7 +338,7 @@ normally loader function return getAPI request, then we can have const data = us
 errorElement prop in Route
 
 ```javascript
-<Route path="/" element={<HomePage />} **errorElement={<Error />}** loader={homePageLoader} />
+<Route path="/" element={<HomePage />} errorElement={<Error />} loader={homePageLoader} />
 ```
 
 inspecting error message:
