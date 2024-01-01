@@ -150,18 +150,6 @@ Another way:
 ```
 
 ---
-### Link state prop & useLocation() hook
-By using the **state** prop, you can pass and retrieve data between components during navigation using React Router.<br><br>
-\<Link /> prop: **state={{ search: searchParams.toString() }** -- saving state between one link(URL) and the next<br>
-next component: receiving state from above: **useLocation()**<br><br>
-eg. {pathname: "/vans/5", search: "", hash: "", state: {search: "type=luxury"}, key: "emy8w7js"}<br>
-
-```javascript
-const search = location.state?.search || ""
-<Link to={`..${search}`} /> -- back to previous page with saved filtered
-```
-
----
 ### Query Parameters
 uery parameters can be useful in determining which content to display to our user and React Router provides a mechanism for grabbing query parameter values with the useSearchParams() hook.<br>
 - Sorting, Filtering, Pagination
@@ -222,6 +210,18 @@ function handleFilterChange(key, value) {
     })
   }
 <button onClick={() => handleFilterChange("type", "jedi")}>Jedi</button>
+```
+
+---
+### Link state prop & useLocation() hook
+By using the **state** prop, you can pass and retrieve data between components during navigation using React Router.<br><br>
+\<Link /> prop: **state={{ search: searchParams.toString() }** -- saving state between one link(URL) and the next<br>
+next component: receiving state from above: **useLocation()**<br><br>
+eg. {pathname: "/vans/5", search: "", hash: "", state: {search: "type=luxury"}, key: "emy8w7js"}<br>
+
+```javascript
+const search = location.state?.search || ""
+<Link to={`..${search}`} /> -- back to previous page with saved filtered
 ```
 
 ---
