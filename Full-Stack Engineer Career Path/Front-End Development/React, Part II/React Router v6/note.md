@@ -168,6 +168,7 @@ uery parameters can be useful in determining which content to display to our use
 - Begins with "?"
 - Seperate by "&"
 - searchParams = URLsearchParams {}
+- saved state in the url -> able to share saved state (sorting, filter, etc...) / won't lose state when page refreshed
 <br>
 useful tools:<br>
 - searchParams.get("")<br>
