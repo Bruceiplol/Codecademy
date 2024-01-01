@@ -171,6 +171,7 @@ uery parameters can be useful in determining which content to display to our use
 - saved state in the url -> able to share saved state (sorting, filter, etc...) / won't lose state when page refreshed
 <br>
 useful tools:<br>
+- const [searchParams, setSearchParams] = useSearchParams()<br>
 - searchParams.get("")<br>
 - searchParams.toString()<br><br>
 
