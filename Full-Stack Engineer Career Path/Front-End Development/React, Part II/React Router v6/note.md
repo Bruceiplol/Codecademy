@@ -480,15 +480,14 @@ return (
 )
 ```
 
-
-
-
+---
 #### replace prop in Form
 forget the current Route in the history stack
 ```javascript
 <Form method="post" className="login-form" replace> </Form>
 ```
 
+---
 #### useNavigation() hook
 since our loading in loader is in action funtion (getting API), we cannot access data inside it<br>
 utility to setup status prop in our component, give us info about the status about the loader<br><br>
