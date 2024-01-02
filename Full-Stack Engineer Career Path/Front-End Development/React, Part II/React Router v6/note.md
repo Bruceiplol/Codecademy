@@ -443,6 +443,46 @@ If we only working on front-end, react router action function intercept the requ
 
 **useActionData** hook inside the function component to get Action return<br><br>
 
+index page:
+```javascript
+<Route
+      path="login"
+      element={<Login />}
+      loader={loginLoader}
+      action={loginAction}
+/>
+```
+login page:
+
+```javascript
+export async function action({ request }) {
+    const formData = await request.formData()
+    const email = formData.get("email")
+    const password = formData.get("password")
+    try {
+        const data = await loginUser({ email, password })
+        localStorage.setItem("loggedin", true)
+        return redirect("/host")
+    } catch(err) {
+        return err.message
+    }
+}
+```
+
+inside component function:
+```javascript
+const errorMessage = useActionData()
+
+return (
+        ...
+        {message && <h3 className="red">{message}</h3>}
+        ...
+)
+```
+
+
+
+
 #### replace prop in Form
 forget the current Route in the history stack
 ```javascript
