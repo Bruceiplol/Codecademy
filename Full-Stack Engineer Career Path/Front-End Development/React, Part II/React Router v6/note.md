@@ -399,6 +399,17 @@ use redirect() -- but it needs to happend in every protected route's loader
 ```
 
 ---
+Alternative:<br><br>
+
+turn loader function into aysnc function and awiat requireAuth
+```javascript
+export async function loader({ params }) {
+    await requireAuth()
+    return getHostVans(params.id)
+}
+```
+
+---
 ### useNavigate() hook
 useNavigate: similar to redirect, but can only operate inside the component function<br><br>
 ```javascript
