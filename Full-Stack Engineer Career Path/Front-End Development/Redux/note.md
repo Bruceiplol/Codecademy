@@ -1,5 +1,5 @@
 ## Redux library:
-Redux is a state management library that follows a pattern known as the Flux architecture. <br>
+Redux is a **state management** library that follows a pattern known as the Flux architecture. <br>
 In Flux and Redux, shared information is consolidated within a single object instead of being scattered across individual components.<br>
 “The patterns and tools provided by Redux make it easier to understand when, where, why, and how the state in your application is being updated, and how your application logic will behave when those changes occur. Redux guides you towards writing code that is predictable and testable, which helps give you confidence that your application will work as expected.”
 
