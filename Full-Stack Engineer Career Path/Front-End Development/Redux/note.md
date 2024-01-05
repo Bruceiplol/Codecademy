@@ -5,15 +5,18 @@ In Flux and Redux, shared information is consolidated within a single object ins
 
 ---
 ### One-Way Data Flow
-State – the current data used in the app<br>
-View – the user interface displayed to users<br>
-Actions – events that a user can take to change the state<br>
+**State** – the current data used in the app<br>
+**View** – the user interface displayed to users<br>
+**Actions** – events that a user can take to change the state<br>
 
 ---
 ### State
-State in a web application represents the current information that drives the application’s behavior and appearance. It acts as a centralized source of data, storing the essential details of the application at any given moment.
-With Redux, the state can be any JavaScript type, including number, string, boolean, array, and object.
+State in a web application represents the current information that drives the application’s behavior and appearance. It acts as a centralized source of data, storing the essential details of the application at any given moment.<br>
+With Redux, the state can be any JavaScript type, including number, string, boolean, array, and object.<br>
+
+``` js
 const state = ['Take Five', 'Clair de Lune', 'Respect']
+```
 
 ---
 ### Action
