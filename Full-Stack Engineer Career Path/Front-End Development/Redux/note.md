@@ -5,9 +5,9 @@ In Flux and Redux, shared information is consolidated within a single object ins
 
 ---
 ### One-Way Data Flow
-State – the current data used in the app
-View – the user interface displayed to users
-Actions – events that a user can take to change the state
+State – the current data used in the app<br>
+View – the user interface displayed to users<br>
+Actions – events that a user can take to change the state<br>
 
 ---
 ### State
