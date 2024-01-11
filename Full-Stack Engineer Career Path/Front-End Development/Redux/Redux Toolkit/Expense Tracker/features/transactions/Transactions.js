@@ -1,37 +1,17 @@
-import { createSlice } from '@reduxjs/tookit'
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { selectFlattenedTransactions } from './transactionsSlice';
+import TransactionForm from '../../components/TransactionForm';
+import TransactionList from '../../components/TransactionList';
 
+const Transactions = () => {
+  const transactions = useSelector(selectFlattenedTransactions);
+  return (
+    <div className="comments-container">
+      <TransactionList transactions={transactions} />
+      <TransactionForm />
+    </div>
+  );
+};
 
-export const CATEGORIES = [
-  "housing",
-  "food",
-  "transportation",
-  "utilities",
-  "clothing",
-  "healthcare",
-  "personal",
-  "education",
-  "entertainment",
-];
-const initialState = CATEGORIES.map((category) => ({
-  category: category,
-  amount: 0,
-}));
-
-const budgetsSlice = createSlice({
-  name: 'budgets',
-  initialState: initialState,
-  reducers: {
-    editBudget: (state, action) => {
-      const {category, amount} = action.payload
-      const budgetToUpdate = state.find(budget => budget.category === category)
-      if (budgetToUpdate) {
-        budgetToUpdate.amount = amount
-      }
-    }
-  },
-})
-
-
-export const selectBudgets = (state) => state.budgets;
-export {editBudget} = budgetsSlice.actions;
-export default budgetsSlice.reducer;
+export default Transactions;
