@@ -16,7 +16,7 @@ npm init
 ```
 
 npm init -y to get initialized quickly
-
+<br>
 ### Installation
 A popular Node.js package is nodemon, a tool used to automatically restart a program when a file changes, alleviating the need to do so manually each time you save a file.
 
@@ -25,8 +25,8 @@ npm i nodemon
 ```
 
 #### devDependencies
-development dependencies are used for the purpose of making development easier or more efficient.
-In fact, the nodemon package is actually better suited as a development dependency
+development dependencies are used for the purpose of making development easier or more efficient.<br>
+In fact, the nodemon package is actually better suited as a development dependency<br>
 This indicates that the package is being used specifically for development and will not be included in a production release of the project.
 
 ```js
@@ -35,8 +35,8 @@ npm install nodemon --save-dev
 ```
 
 #### Global packages
-Some packages can be installed globally meaning they are available system-wide, without the need to install it each time you create a new application.
-Typically, packages installed this way will be used in the command-line rather than imported into a project’s code. 
+Some packages can be installed globally meaning they are available system-wide, without the need to install it each time you create a new application. <br>
+Typically, packages installed this way will be used in the command-line rather than imported into a project’s code. <br>
 One such example is the http-server package which allows you to spin up a zero-configuration server from anywhere in the command-line.
 
 ```js
