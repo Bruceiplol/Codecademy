@@ -59,6 +59,7 @@ const errorFirstCallback = (err, data)  => {
 ## The Buffer Module
 - The ```Buffer``` module is within the global scope
 - the ```Buffer``` module is used to handle binary data.
+- Buffer is a global object that is used to represent a fixed amount of memory that can't be resized.
 - The ```Buffer``` module provides a variety of methods to handle the binary data such as ```.alloc()```, ```.toString()```, ```.from()```, and ```.concat()```.
   - The ```.alloc()``` method creates a new Buffer object with the size specified as the first parameter. ```.alloc()``` accepts three arguments:
     - Size: Required. The size of the buffer
