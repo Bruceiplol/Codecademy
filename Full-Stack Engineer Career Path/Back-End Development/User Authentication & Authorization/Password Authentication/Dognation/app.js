@@ -19,7 +19,7 @@ app.use(
   session({
     secret: "D53gxl41G",
     cookie: { maxAge: 1000 * 60 * 60 * 24 },
-    saveUnintialized: false,
+    saveUninitialized: false,
     resave: false,
     sameSite: "none",
     secure: true,
