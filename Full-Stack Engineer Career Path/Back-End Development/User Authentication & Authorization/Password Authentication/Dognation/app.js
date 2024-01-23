@@ -1,28 +1,42 @@
+// Import packages
+const express = require("express");
+const app = express();
+const session = require("express-session");
 const passport = require("passport");
-const LocalStrategy = require("passport-local").Strategy;
-const bcrypt = require("bcrypt");
-const helper = require("../helpers/helper");
 
-// Set up the Passport strategy:
-passport.use(
-  new LocalStrategy(function (username, password, done) {
-    helper.findByUsername(username, async (err, user) => {
-      const matchedPassword = await bcrypt(password, user.password);
-      if (err) return done(err);
-      if (!user) return done(null, false);
-      if (!matchedPassword) return done(null, false);
-      return done(null, user);
-    });
+// App config
+app.set("trust proxy", 1);
+const PORT = process.env.PORT || 4001;
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(__dirname + "/public"));
+app.set("view engine", "ejs");
+// Import Passport config
+require("./config/passport");
+
+// Session Config
+app.use(
+  session({
+    secret: "D53gxl41G",
+    cookie: { maxAge: 1000 * 60 * 60 * 24 },
+    saveUnintialized: false,
+    resave: false,
+    sameSite: "none",
+    secure: true,
   })
 );
-// Serialize a user
-passport.serializeUser((user, done) => {
-  done(null, user.id);
+// Passport Config
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Routes
+app.use(require("./routes/index.routes"));
+
+app.get("/", (req, res) => {
+  const user = req.user || "Guest";
+  res.render("home", { user });
 });
-// Deserialize a user
-passport.deserializeUser((id, done) => {
-  helper.findById(id, (err, done) => {
-    if (err) return done(err);
-    done(null, user);
-  });
+
+app.listen(PORT, () => {
+  console.log(`Server is listening on port: ${PORT}`);
 });
