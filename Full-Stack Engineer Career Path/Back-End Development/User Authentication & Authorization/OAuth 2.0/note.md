@@ -43,6 +43,8 @@ OAuth 2.0 grant types, also known as flows, describe multiple ways to obtain acc
 - Redirecting the user to the OAuth provider and obtaining an access token
 - Using the access token to gain restricted access
 
+
+![Authentication Flow](https://static-assets.codecademy.com/content/paths/web-security/oauth2/grant-types-bgfill-v3.svg)
 #### Client Credentials Grant
 - A Client Credentials Grant is used when applications request an application token to access their own resource.
 - This grant type has a limited use case because it’s only used when the resource server and the authentication server are the same entity.
