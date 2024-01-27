@@ -16,9 +16,9 @@ describe("user visit root", () => {
       browser.setValue("input[id=source]", source);
       browser.click('input[type=submit]')
       //verify
-      assert.include(browser.getText('#quote'), quote)
-      assert.include(browser.getText('#attributed'), attributed)
-      assert.include(browser.getText('#source'), source)
+      assert.include(browser.getText('#quotes'), quote)
+      assert.include(browser.getText('#quotes'), attributed)
+      assert.include(browser.getText('#quotes'), source)
     });
   });
 });
