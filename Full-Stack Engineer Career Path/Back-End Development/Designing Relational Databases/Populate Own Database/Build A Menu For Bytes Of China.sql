@@ -1,42 +1,54 @@
 #1 Task Group 1: Create Tables and Primary Keys
 CREATE TABLE restaurant (
-  id integer PRIMARY KEY,
+  id int PRIMARY KEY,
   name varchar(20),
   description varchar(100),
+  ratings decimal,
   telephone char(10),
-  opening_hours varchar(100),
-  ratings decimal
+  hours varchar(100)
 );
 
 CREATE TABLE address (
-  id integer PRIMARY KEY,
+  id int PRIMARY KEY,
   street_number varchar(10),
   street_name varchar(20),
   city varchar(20),
   state varchar(15),
   google_map_link varchar(50),
-  restaurant_id integer REFERENCES restaurant(id) UNIQUE
+  restaurant_id int REFERENCES restaurant(id) UNIQUE
 );
 
+SELECT constraint_name, table_name, column_name
+FROM information_schema.key_column_usage
+WHERE table_name = 'restaurant';
+
+SELECT constraint_name, table_name, column_name
+FROM information_schema.key_column_usage
+WHERE table_name = 'address';
+
 CREATE TABLE category (
-  id char(2),
-  name varchar(50),
+  id char(2) PRIMARY KEY,
+  name varchar(20),
   description varchar(200)
 );
 
+SELECT constraint_name, table_name, column_name
+FROM information_schema.key_column_usage
+WHERE table_name = 'category';
+
 CREATE TABLE dish (
-  id integer PRIMARY KEY,
+  id int PRIMARY KEY,
   name varchar(50),
   description varchar(200),
   hot_and_spicy bool
 );
 
 CREATE TABLE review (
-  id integer PRIMARY KEY,
+  id int,
   rating decimal,
   description varchar(100),
   date date,
-  restaurant_id integer REFERENCES restaurant(id)
+  restaurant_id int REFERENCES restaurant(id)
 );
 
 #2 Task Group 2: Define Relationships and Foreign Keys
@@ -45,10 +57,10 @@ CREATE TABLE review (
 #many-to-many relationship: category and dish
 
 CREATE TABLE categories_dishes (
-  category_id char(2),
-  dish_id integer,
+  category_id char(2) REFERENCES category(id),
+  dish_id int REFERENCES dish(id),
   price money,
-  PRIMARY KEY(category_id, dish_id)
+  PRIMARY KEY (category_id, dish_id)
 );
 
 SELECT constraint_name, table_name, column_name
@@ -276,6 +288,6 @@ ORDER BY 1;
 
 SELECT dish.name,  COUNT(dish_id) AS dish_count 
 FROM categories_dishes JOIN dish on categories_dishes.dish_id = dish.id
-GROUP BY 1
+GROUP BY 1, 2
 HAVING COUNT(dish_id) > 1;
 
