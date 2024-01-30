@@ -1,3 +1,7 @@
+# Data Schema
+- Database schemas are often drawn as diagrams — big pictures showing every table and how they are connected.
+- To assist in keeping track of the database, a schema can be used to help visualize the database and all of its relations.
+
 Free online database design tools:
 - DbDiagram.io - a free, simple tool to draw ER diagrams by just writing code, designed for developers and data analysts.
 - SQLDBM - SQL Database Modeler
@@ -144,3 +148,12 @@ Example:
 - recipe table: id (primary key), name, ...
 - ingredient table: id(primary key), name, ...
 - recipes_ingredients table (third cross-reference): recipe_id (foreign key referencing recipe table id), ingredient_id (foreign key referencing ingredient table id)
+
+---
+## Entity Relationship Diagram
+- An Entity Relationship Diagram (ERD) is a method of diagramming a database with a little more description put into it to allow a designer to better understand the database and the relationships between the tables.
+- items:
+  - Entities: rectangles, indicate the table’s name.
+  - Attributes: oval, the individual columns that will be found within that table or entity.
+  - Actions: diamonds, describe the relationships between different entities. For instance, if we have two entities, a Customer and a Credit Card that are both connected, we can put an action in between those two that says “has” to show the designer that a Customer has a Credit Card.
+  - Connecting Lines: show the connection between each entity, action, and attribute.
