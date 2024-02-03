@@ -1,4 +1,4 @@
-Grid Template Areas
+#### Grid Template Areas
 - The grid-template-areas property allows you to name sections of your web page
 exmaple
 ```
