@@ -9,6 +9,7 @@ connection_type  db  user  address  auth_method  [auth_options]
 <br>
 Example:<br>
 we’ll be building will allow SSL connections to a database called `db_example` for members of the `g_example` group on the same network as the server and use sha-256 password authentication.
+
 ```
 hostssl  db_example  +g_example  samenet  scram-sha-256
 ```
