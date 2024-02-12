@@ -91,3 +91,7 @@ var x = "codecademy";
   - JSHint
 - We can customize the linter rules to fit our needs using configuration files or third-party plugins.
 - eslint-plugin-security is a plugin that adds rules to detect several security vulnerabilities including all of the aforementioned security risks in this lesson.
+
+- run `eslint .` on terminal to analyze the code and find any potential issues.
+
+Run `eslint --fix .` to automatically fix most of the issues found.
