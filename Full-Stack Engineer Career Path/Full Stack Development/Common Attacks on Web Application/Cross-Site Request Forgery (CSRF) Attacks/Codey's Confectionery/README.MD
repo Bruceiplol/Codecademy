@@ -1,0 +1,5 @@
+- Requiring csurf
+- Configuring the csurf cookie
+- Set up a middleware function
+- Pass the CSRF token to the template
+- Use the CSRF token inside a form
