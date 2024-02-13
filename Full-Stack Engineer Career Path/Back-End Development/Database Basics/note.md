@@ -28,11 +28,13 @@
 - “not-only SQL”, but is also commonly called “non-relational” or “non-SQL”
 - Any database technology that stores data differently from relational databases can be categorized as a NoSQL database
 <br>
+
 ##### Benifits
 - **Scalability**: NoSQL was designed with scalability as a priority. NoSQL can be an excellent choice for massive datasets that need to be distributed across multiple servers and locations.
 - **Flexibility**: Unlike a relational database, NoSQL databases don’t require a schema. This means that NoSQL can handle unstructured or semi-structured data in different formats.
 - **Developer Experience**: NoSQL requires less organization and thus lets developers focus more on using the data than on figuring out how to store it.
 <br>
+
 ##### Drawbacks:
 - **Data Integrity**: Relational databases are typically ACID compliant, ensuring high data integrity. NoSQL databases follow BASE principles (basic availability, soft state, and eventual consistency) and can often sacrifice integrity for increased data distribution and availability. However, some NoSQL databases do offer ACID compliance.
 - **Language Standardization**: While some NoSQL databases do use the Structured Query Language (SQL), typically, each database uses its unique language to set up, manage, and query data.
