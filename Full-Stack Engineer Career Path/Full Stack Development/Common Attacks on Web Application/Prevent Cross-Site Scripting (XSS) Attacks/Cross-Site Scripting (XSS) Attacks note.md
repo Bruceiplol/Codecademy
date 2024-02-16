@@ -106,7 +106,7 @@ element.innerHTML = "<HTML> Tags and markup";
 element.innerHTML = "<maliciousHTML>";
 // Will render as text on the webpage.
 element.textContent = "<displaysAsText>";
-
+```
 ```
 document.write("<b>Current URL</b> : " + document.baseURI);
 /=>
