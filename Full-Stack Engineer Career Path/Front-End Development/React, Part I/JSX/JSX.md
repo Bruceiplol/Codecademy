@@ -8,6 +8,7 @@
 - A React root’s render() method only updates DOM elements that have changed using the virtual DOM.
 
 ----------------------------------------------------------------------------------------------------------
+```js
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 
@@ -23,3 +24,4 @@ const myList = (
 );
 
 root.render(myList);
+```
