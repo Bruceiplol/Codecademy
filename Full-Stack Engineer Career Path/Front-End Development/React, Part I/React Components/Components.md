@@ -7,7 +7,7 @@
   Methods imported from 'react' are only for pure React purposes, such as creating components or writing JSX elements. <br/>
 <br/>
 
-3. ```Create a Function Component``` <br/>
+3. Create a Function Component <br/>
   It’s useful to think of components as smaller pieces of our interface. Combined, they are the building blocks that make up a React application.  <br/>
   e.g. In a website, a component for the search bar, another component for the navigation bar, and another component for the dashboard content itself. <br/>
   Function component names must start with capitalization and are conventionally created with PascalCase! Due to how JSX tags are compiled, capitalization indicates that it is a React component rather than an HTML tag. <br/>
