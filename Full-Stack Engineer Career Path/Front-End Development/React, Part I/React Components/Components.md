@@ -1,4 +1,4 @@
-1. import React from 'react';
+1. ```import React from 'react';```
   This creates an object named React, which contains methods necessary to use the React library. With the object, we can start utilizing features of the react library!
 
 2. import ReactDOM from 'react-dom/client';
