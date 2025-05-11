@@ -21,12 +21,14 @@ function MyComponent() {
 5. The Return Keyword in Functional Components <br/>
   when we define functional components, we must return a JSX element. <br/>
 <br/>
+
 6. Importing and Exporting React Components <br/>
   App.js file is the top level of your application, and index.js is the entry point. <br/>
   we’ve defined the component inside of App.js, but because index.js is the entry point, we have to export it to index.js to render. <br/>
   ```export default MyComponent;``` <br/>
   ```import MyComponent from './App';``` <br/>
 <br/>
+
 7. Using and Rendering a Component <br/>
   We can use it with an HTML-like syntax that resembles a self-closing tag: <br/>
   => ```<MyComponent />```<br/>
